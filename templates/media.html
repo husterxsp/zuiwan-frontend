@@ -1,0 +1,27 @@
+<ion-view view-title="醉晚亭|媒体">
+    <ion-content>
+        <ul class="media">
+            <li class="media-item" ng-repeat="item in [1,2,3,4,5,6]" 
+                                    ui-sref="media-detail({mediaId: $index})">
+                <img src="img/media-logo.png" alt="" class="media-logo">
+                <div class="content">
+                    <div class="title">华中科技大学学生会</div>
+                    <div>华中科技大学学生会, 校党委领导、校团委的指导下的学生群众组织</div>
+                </div>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>
+
+<!-- <ion-view view-title="醉晚亭|媒体">
+    <ion-content>
+        <ion-list class="media">
+            <ion-item class="media-item" ng-repeat="chat in [1,2,3,4]" href="#">
+                <img ng-src="../img/media-logo.png" alt="">
+                <h2>华中科技大学学生会</h2>
+                <p>华中科技大学学生会, 校党委领导、校团委的指导下的学生群众组织</p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
+ -->
