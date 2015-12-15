@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <title>醉晚亭</title>
     <meta charset="utf-8">
@@ -14,25 +14,24 @@
     <meta name="robots" content="index,follow"/>
     <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/fontello.css" rel="stylesheet">
-
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fontello.css">
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+    <script src="lib/angular-md5.min.js"></script>
+    <script src="lib/zepto.min.js"></script>
+    <script src="lib/fastclick.min.js"></script>
+    <script src="lib/iscroll.js"></script>
+    <script src="lib/swipe.js"></script>
 
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
     <script src="js/main.js"></script>
-    <!-- 注意IE兼容方式的写法...起作用了..但是好像IE10下也被改了？知识IE edge下有bug -->
-    <!--[if IE]><!-->
-        <style>
-/*            .tab-nav.tabs {
-                justify-content: flex-start;
-            }*/
-        </style>
-    <!--<![endif]-->
 </head>
-<body ng-app="starter">
-    <ion-nav-view></ion-nav-view>
+<body>
+    <div class="container">
+        <div ui-view></div>
+    </div>
 </body>
 </html>

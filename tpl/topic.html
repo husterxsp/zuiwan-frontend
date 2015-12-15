@@ -1,0 +1,12 @@
+<ul class="topic">
+    <li ng-repeat="item in [1,2,3,4,5]" ui-sref="topicDetail({topicId: $index})">
+        <div class="content">
+            <div class="title">
+                <span class="title-h">世界真奇妙</span>
+                <span><span class="number">50</span>篇</span>
+            </div>
+            <p>关于这个专题的简单说明，避免用户产生迷惑</p>
+        </div>
+    </li>
+</ul>
+<ng-include src="'tpl/tab.html'"></ng-include>

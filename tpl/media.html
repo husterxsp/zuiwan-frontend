@@ -1,0 +1,10 @@
+<ul class="media">
+    <li ng-repeat="item in [1,2,3,4,5,6]" ui-sref="mediaDetail({mediaId: $index})">
+        <img src="img/media-logo.png" alt="" class="media-logo">
+        <div class="content">
+            <div class="title">华中科技大学学生会</div>
+            <div>华中科技大学学生会, 校党委领导、校团委的指导下的学生群众组织</div>
+        </div>
+    </li>
+</ul>
+<ng-include src="'tpl/tab.html'"></ng-include>

@@ -25,3 +25,7 @@
     win.addEventListener(resizeEvt, recalc, false);
     doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document, window);
+
+$(function() {
+    FastClick.attach(document.body);
+});
