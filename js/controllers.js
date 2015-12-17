@@ -1,8 +1,7 @@
 //推荐模块
 var recommendModule = angular.module("RecommendModule", []);
-recommendModule.controller('RecommendCtrl', function($scope) {
+recommendModule.controller('RecommendCtrl', function($scope, $http, ArticleService) {
 
-    console.log(document.getElementById('slide'));
     $scope.mySwipe = new Swipe(document.getElementById('slide'), {
         startSlide: 2,
         speed: 400,
@@ -13,7 +12,14 @@ recommendModule.controller('RecommendCtrl', function($scope) {
         callback: function(index, elem) {},
         transitionEnd: function(index, elem) {}
     });
-
+    var promiseOrArticles = ArticleService.query();
+    if (promiseOrArticles.then){
+        promiseOrArticles.then(function(data) {
+            $scope.articles = data;
+        });
+    } else {
+        $scope.articles = promiseOrArticles;
+    }
 });
 
 //专题模块
@@ -91,8 +97,43 @@ accountModule.controller('AccountCtrl', function($scope, $http, $state, Storage)
                 })
         };
     }]);
-//文章
-var articleModule = angular.module("ArticleModule", []);
-articleModule.controller('ArticleCtrl', function($scope) {
 
+//文章
+var articleModule = angular.module("ArticleModule", ["ngSanitize"]);
+articleModule.controller('ArticleCtrl', function($scope, $http, $state, Storage, ArticleService) {
+    var id = $state.params.articleId;
+    var promiseOrArticles = ArticleService.query();
+    if (promiseOrArticles.then){
+        promiseOrArticles.then(function(data) {
+            $scope.articles = data;
+            $scope.article = $scope.articles[id];
+        });
+    } else {
+        $scope.articles = promiseOrArticles;
+        $scope.article = $scope.articles[id];
+    }
+    $scope.collect = function(){
+        /**
+         * @todo user不存在时，collect按钮不应该显示
+         */
+        var user = Storage.get();
+        if (!user){
+            return;
+        }
+        $http.post("/zuiwan-backend/index.php/user/collect_article", {
+            username: Storage.get().username,
+            article_id: $scope.article.id
+        }, {
+            withCredentials: true
+        })
+        .then(function(res){
+            if (res.data.message == "success") {
+                //提示收藏文章成功
+            } else {
+                //收藏文章失败
+            }
+        }, function(res) {
+            alert("注册失败！");
+        })
+    }
 });
