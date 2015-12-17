@@ -1,7 +1,6 @@
 //推荐模块
 var recommendModule = angular.module("RecommendModule", []);
 recommendModule.controller('RecommendCtrl', function($scope, $http, ArticleService) {
-
     $scope.mySwipe = new Swipe(document.getElementById('slide'), {
         startSlide: 2,
         speed: 400,
@@ -12,14 +11,18 @@ recommendModule.controller('RecommendCtrl', function($scope, $http, ArticleServi
         callback: function(index, elem) {},
         transitionEnd: function(index, elem) {}
     });
-    var promiseOrArticles = ArticleService.query();
+    $scope.set_articles = ArticleService.set_articles;
+
+    var promiseOrArticles = ArticleService.get_articles();
     if (promiseOrArticles.then){
         promiseOrArticles.then(function(data) {
             $scope.articles = data;
+            $scope.set_articles($scope.articles);
         });
     } else {
         $scope.articles = promiseOrArticles;
     }
+    
 });
 
 //专题模块
@@ -102,16 +105,21 @@ accountModule.controller('AccountCtrl', function($scope, $http, $state, Storage)
 var articleModule = angular.module("ArticleModule", ["ngSanitize"]);
 articleModule.controller('ArticleCtrl', function($scope, $http, $state, Storage, ArticleService) {
     var id = $state.params.articleId;
-    var promiseOrArticles = ArticleService.query();
+    console.log("id ", id);
+    $scope.set_articles = ArticleService.set_articles;
+
+    var promiseOrArticles = ArticleService.get_articles();
     if (promiseOrArticles.then){
         promiseOrArticles.then(function(data) {
             $scope.articles = data;
             $scope.article = $scope.articles[id];
+            $scope.set_articles($scope.articles);
         });
     } else {
         $scope.articles = promiseOrArticles;
         $scope.article = $scope.articles[id];
     }
+
     $scope.collect = function(){
         /**
          * @todo user不存在时，collect按钮不应该显示
