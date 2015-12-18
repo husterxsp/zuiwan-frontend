@@ -16,6 +16,7 @@ myApp.config(['$httpProvider', function($httpProvider) {
         return str.join("&");
     };
 }]);
+
 myApp.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/recommend');
 
@@ -49,4 +50,4 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
     }).state('tab',{
         templateUrl: 'tpl/tab.html'
     })
-});
+})

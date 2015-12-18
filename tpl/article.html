@@ -1,3 +1,8 @@
+<style type="text/css">
+    .ng-binding img {
+        width: 100%;
+    }
+</style>
 <div class="article" ng-controller="ArticleCtrl">
     <div class="intro">
         <img src="img/avatar.png" alt="">
@@ -8,13 +13,11 @@
     </div>
     <img class="article-img" src="img/topic-article.png" alt="">
     <div class="article-content">
-        <div class="date">December 09 , 2015</div>
-        <div class="title">茉客 . 时尚艺术品鉴会</div>
-        <p>如果你以为将大牌奢侈品穿在身上就是品位。你就绝对out了，从彭麻麻开始，所有时尚人士的目光都聚焦在设计师品牌上 买几件人人皆知, 如果你以为将大牌奢侈品穿在身上就是品位。你就绝对out了，从彭麻麻开始，所有时尚人士的目光都聚焦在设计师品牌上 买几件人人皆知。</p>
-        <p>如果你以为将大牌奢侈品穿在身上就是品位。你就绝对out了，从彭麻麻开始，所有时尚人士的目光都聚焦在设计师品牌上 买几件人人皆知, 如果你以为将大牌奢侈品穿在身上就是品位。你就绝对out了，从彭麻麻开始，所有时尚人士的目光都聚焦在设计师品牌上 买几件人人皆知。</p>
-        <p>如果你以为将大牌奢侈品穿在身上就是品位。你就绝对out了，从彭麻麻开始，所有时尚人士的目光都聚焦在设计师品牌上 买几件人人皆知, 如果你以为将大牌奢侈品穿在身上就是品位。你就绝对out了，从彭麻麻开始，所有时尚人士的目光都聚焦在设计师品牌上 买几件人人皆知。</p>
+        <div class="date">{{article.create_time}}</div>
+        <div class="title">{{article.article_title}}</div>
+        <p ng-bind-html="article.article_content"></p>
     </div>
     <div class="article-back"><i class="icon-left-open-big"></i></div>
-    <div class="article-collect"><i class="icon-heart-empty"></i></div>
+    <div class="article-collect"><i class="icon-heart-empty" ng-click="collect()"></i></div>
     <div class="article-share"><i class="icon-export"></i></div>
 </div>
