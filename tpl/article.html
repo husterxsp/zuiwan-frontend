@@ -1,9 +1,4 @@
-<style type="text/css">
-    .ng-binding img {
-        width: 100%;
-    }
-</style>
-<div class="article" ng-controller="ArticleCtrl">
+<div class="article">
     <div class="intro">
         <img src="img/avatar.png" alt="">
         <div class="media-author">
@@ -17,7 +12,7 @@
         <div class="title">{{article.article_title}}</div>
         <p ng-bind-html="article.article_content"></p>
     </div>
-    <div class="article-back"><i class="icon-left-open-big"></i></div>
+    <div class="article-back" ng-click="back()"><i class="icon-left-open-big"></i></div>
     <div class="article-collect"><i class="icon-heart-empty" ng-click="collect()"></i></div>
     <div class="article-share"><i class="icon-export"></i></div>
 </div>

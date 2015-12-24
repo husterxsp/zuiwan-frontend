@@ -104,12 +104,15 @@ ul.tab li img {
     visibility: hidden;
 }
 .recommend #slide ul {
+    position: absolute;
+    width: 400%;
+    overflow: hidden;
     height: 100%;
 }
 .recommend #slide li {
     position: relative;
     float: left;
-    width: 100%;
+    width: 25%;
     height: 100%;
     background: no-repeat center/cover;
     background-image: url(../img/recommend-slide.png);
@@ -289,7 +292,6 @@ ul.tab li img {
     position: relative;
     z-index: 1;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    width: 1000px;
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);

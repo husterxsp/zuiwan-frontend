@@ -18,36 +18,55 @@ myApp.config(['$httpProvider', function($httpProvider) {
 }]);
 
 myApp.config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/recommend');
+    $urlRouterProvider.otherwise('/tab/recommend');
 
-    $stateProvider.state('recommend', {
-        url: '/recommend',
-        templateUrl: 'tpl/recommend.html'
-    }).state('topic', {
-        url: '/topic',
-        templateUrl: 'tpl/topic.html'
-    }).state('topicDetail', {
-        url: '/topic/:topicId',
-        templateUrl: 'tpl/topic-detail.html'
-    }).state('media', {
-        url: '/media',
-        templateUrl: 'tpl/media.html'
-    }).state('mediaDetail', {
-        url: '/media/:mediaId',
-        templateUrl: 'tpl/media-detail.html'
-    }).state('account', {
-        url: '/account',
-        templateUrl: 'tpl/account.html'
-    }).state('login', {
-        url: '/login',
-        templateUrl: 'tpl/login.html'
-    }).state('register', {
-        url: '/register',
-        templateUrl: 'tpl/register.html'
-    }).state('article',{
-        url: '/article/:articleId',
-        templateUrl: 'tpl/article.html'
-    }).state('tab',{
-        templateUrl: 'tpl/tab.html'
-    })
+    $stateProvider.state('tab', {
+            url: '/tab',
+            templateUrl: 'tpl/tab.html',
+        })
+        .state('tab.recommend', {
+            url: '/recommend',
+            templateUrl: 'tpl/recommend.html',
+            controller: 'RecommendCtrl'
+        })
+        .state('tab.topic', {
+            url: '/topic',
+            templateUrl: 'tpl/topic.html',
+            controller: 'TopicCtrl'
+        })
+        .state('tab.media', {
+            url: '/media',
+            templateUrl: 'tpl/media.html',
+            controller: 'MediaCtrl'
+        })
+        .state('tab.account', {
+            url: '/account',
+            templateUrl: 'tpl/account.html',
+            controller: 'AccountCtrl'
+        })
+        .state('topicDetail', {
+            url: '/topic/:topicId',
+            templateUrl: 'tpl/topicDetail.html',
+            controller: 'TopicDetailCtrl'
+        })
+        .state('mediaDetail', {
+            url: '/media/:mediaId',
+            templateUrl: 'tpl/mediaDetail.html',
+            controller: 'MediaDetailCtrl'
+        })
+        .state('tab.login', {
+            url: '/login',
+            templateUrl: 'tpl/login.html',
+            controller: 'LoginCtrl'
+        })
+        .state('tab.register', {
+            url: '/register',
+            templateUrl: 'tpl/register.html',
+            controller: 'RegisterCtrl'
+        })
+        .state('article', {
+            url: '/article/:articleId',
+            templateUrl: 'tpl/article.html',
+            controller: 'ArticleCtrl'
+        })
 })
