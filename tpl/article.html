@@ -2,17 +2,19 @@
     <div class="intro">
         <img src="img/avatar.png" alt="">
         <div class="media-author">
-            <div class="article-media">艺术殿堂</div>
-            <div class="article-author"><span>author</span>醉晚亭</div>
+            <div class="article-media">{{article.article_type}}</div>
+            <div class="article-author"><span>author</span>{{article.article_author}}</div>
         </div>
     </div>
-    <img class="article-img" src="img/topic-article.png" alt="">
+    <img ng-if="article.article_img" class="article-img" src="{{article.article_img}}" alt="">
     <div class="article-content">
         <div class="date">{{article.create_time}}</div>
         <div class="title">{{article.article_title}}</div>
-        <p ng-bind-html="article.article_content"></p>
+        <div ng-bind-html="article.article_content" class="content"></div>
     </div>
     <div class="article-back" ng-click="back()"><i class="icon-left-open-big"></i></div>
-    <div class="article-collect"><i class="icon-heart-empty" ng-click="collect()"></i></div>
+    <div class="article-collect" ng-click="collect()">
+        <i ng-class="{true: 'icon-heart', false: 'icon-heart-empty'}[hasCollect]"></i>
+    </div>
     <div class="article-share"><i class="icon-export"></i></div>
 </div>

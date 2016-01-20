@@ -21,7 +21,6 @@ a {
     border: 0;
 }
 html {
-    /*font-size: 12px;*/
     height: 100%;
 }
 body {
@@ -32,6 +31,10 @@ body {
     height: 100%;
     color: #fff;
     -webkit-tap-highlight-color: rgba(0,0,0,0); 
+}
+h3 {
+    font-size: 1.7em;
+    margin: 1.7rem 1.34rem;
 }
 a {
     text-decoration: none;
@@ -58,7 +61,7 @@ p {
 }
 .tab-hold {
     position: relative;
-    height: 5rem;
+    height: 4.5rem;
 }
 ul.tab {
     position: fixed;
@@ -73,26 +76,27 @@ ul.tab {
 ul.tab li {
     float: left;
     width: 25%;
-    padding: .65rem 0;
+    padding: .4rem 0;
+}
+ul.tab li i {
+    font-size: 18px;
 }
 ul.tab li:hover {
     cursor: pointer;
-    color: #ffeb3b;
 }
-ul.tab li img {
-    height: 1.9rem;
+ul.tab li.active {
+    color: #ffeb3b;
 }
 
 /*--------------推荐----------------------*/
 .recommend {
-    width: 91.1%;
-    margin: 0 auto;
-    padding-top: .65rem;
+    width: 100%;
 }
 .recommend #slide-hold {
     position: relative;
-    padding-top: 63.4%;
+    padding-top: 62.22%;
     width: 100%;
+    overflow: hidden;
 }
 .recommend #slide {
     position: absolute;
@@ -101,7 +105,6 @@ ul.tab li img {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    visibility: hidden;
 }
 .recommend #slide ul {
     position: absolute;
@@ -121,10 +124,10 @@ ul.tab li img {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 15% 6% 0 6%;
+    padding: 17% 7% 0 8%;
 }
 .recommend #slide .title {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     margin-bottom: 4%;
 }
 .recommend #slide p {
@@ -133,23 +136,41 @@ ul.tab li img {
     width: 80%;
     height: 4.5rem;
     margin-top: 4%;
-    text-align: justify;
     text-overflow: ellipsis;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+
+.recommend #slide .dot {
+    position: absolute;
+    right: 6%;
+    bottom: 7%;
+    overflow: hidden;
+}
+.recommend #slide .dot span {
+    display: block;
+    float: left;
+    width: .6rem;
+    height: .6rem;
+    margin-left: .5rem;
+    background-color: #cfcbc7;
+    border-radius: 50%;
+}
+.recommend #slide .dot span.active{
+    background-color: rgba(14, 150, 200, .8);/*#ff4081*/
+}
 .recommend .line {
-    width: 106%;
+    width: 95.56%;
+    margin: 0 auto;
+    margin-top: 2rem;
     height: 1px;
-    margin-top: 2.59rem;
-    margin-left: -3%;
     background: linear-gradient(to right, rgba(231, 231, 4, .1), rgba(231, 231, 4, .8) 3%, rgba(231, 231, 4, .8) 97%, rgba(231, 231, 4, .1));
 }
 .recommend .other {
     font-size: 1.2rem;
     position: relative;
     top: -0.8rem;
-    left: 1rem;
+    left: 2.6rem;
     padding: 0 .5rem;
     line-height: 1;
     color: #b6a832;
@@ -161,14 +182,11 @@ ul.tab li img {
 .recommend .acticle li {
     position: relative;
     float: left;
-    width: 48.78%;
-    margin-bottom: 2.44%;
-    padding-top: 48.78%;
+    width: 46.67%;
+    padding-top: 46.67%;
+    margin-left: 2.22%;
+    margin-bottom: 2.22%;
     background: no-repeat center/cover;
-    background-image: url(../img/recommend-back.png);
-}
-.recommend .acticle li:nth-child(even) {
-    margin-left: 2.44%;
 }
 .recommend .acticle li .content {
     position: absolute;
@@ -179,6 +197,9 @@ ul.tab li img {
 .recommend .acticle li .title {
     font-size: 1.3rem;
     margin: .3rem .65rem .4rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .recommend .acticle li span {
     display: inline-block;
@@ -186,13 +207,31 @@ ul.tab li img {
     margin-left: .65rem;
 }
 /*----------------专题-----------------------*/
+.topic .search {
+    font-family: inherit;
+    font-size: 1.2rem;
+    position: absolute;
+    z-index: 1;
+    top: .4rem;
+    left: 50%;
+    width: 91.11%;
+    height: 2.3rem;
+    margin-left: -45.55%;
+    margin-top: 1.2rem;
+    text-indent: 1.2rem;
+    color: #fff;
+    border-radius: 10px;
+    background-color: rgba(33, 33, 33, .5);
+}
+
 .topic li {
     position: relative;
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     padding-top: 36%;
-    background: url(../img/topic-back.png) no-repeat center;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .topic li:nth-child(1) {
     padding-top: 44.4%;
@@ -208,7 +247,7 @@ ul.tab li img {
     padding-top: 20%;
 }
 .topic li .title {
-    margin-bottom: 10%;
+    margin-bottom: 9%;
 }
 .title-h {
     font-size: 1.8rem;
@@ -225,15 +264,16 @@ ul.tab li img {
 }
 .media li {
     position: relative;
-    padding: 1.3rem 1.95rem 1.95rem 5.2rem;
+    padding: 1.3rem 1.95rem 1.95rem 5.6rem;
     border-bottom: 1px solid #757575;
 }
 .media li .media-logo {
     position: absolute;
-    left: .65rem;
+    left: 0.6rem;
     top: 2.6rem;
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 3.7rem;
+    height: 3.7rem;
+    border-radius: 50%;
 }
 .media li .content .title {
     font-size: 1.3rem;
@@ -274,7 +314,7 @@ ul.tab li img {
 
 .attention {
     position: relative;
-    padding: 1rem .65rem 1.95rem .65rem;
+    padding: 1rem 0 1.95rem 0;
     border-bottom: 1px solid #757575;
 }
 .attention .title {
@@ -317,7 +357,7 @@ ul.tab li img {
 }
 /*-----------收藏，与推荐相同--------*/
 .collect {
-    padding: 1rem .65rem 0 .65rem;
+    padding-top: 1rem;
     border-bottom: 1px solid #757575;
 }
 .collect .title {
@@ -353,6 +393,9 @@ ul.tab li img {
 .collect ul li .content  .title {
     font-size: 1.3rem;
     margin: .3rem .65rem .4rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .collect ul li .content  span {
     display: inline-block;
@@ -362,10 +405,13 @@ ul.tab li img {
 /*--------------------登录----------------------*/
 .login,
 .register {
-    position: absolute;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
-    color: #000;
     color: #ffeb3b;
     background: url(../img/login-back.png) no-repeat center/cover;
 }
@@ -385,13 +431,14 @@ ul.tab li img {
 .register-content input {
     display: block;
     width: 100%;
-    height: 2.6rem;
+    height: 3.5rem;
     margin-top: 3.5rem;
     text-indent: 2rem;
     color: #ffeb3b;
     border: 1px solid #ffeb3b;
     border-radius: .5rem;
     background-color: rgba(17, 17, 17, .6);
+    font-size: 1.3rem;
 }
 .login-content .to-register {
     margin-top: .9rem;
@@ -495,22 +542,18 @@ input:-ms-input-placeholder {
 /*--------媒体全部文章，和推荐部分样式相同，之后考虑整合一下重复代码---*/
 .media-article-list {
     overflow: hidden;
-    width: 91.1%;
-    margin: 0 auto;
-    overflow: hidden;
 }
 .media-article-item {
     position: relative;
     float: left;
-    width: 48.5%;
-    margin-bottom: 3%;
-    padding-top: 48.5%;
+    width: 46.67%;
+    padding-top: 46.67%;
+    margin-left: 2.22%;
+    margin-bottom: 2.22%;
     background: no-repeat center/cover;
     background-image: url(../img/recommend-back.png);
 }
-.media-article-item:nth-child(even) {
-    margin-left: 3%;
-}
+
 .media-article-content {
     position: absolute;
     bottom: 0;
@@ -520,6 +563,9 @@ input:-ms-input-placeholder {
 .media-article-content .title {
     font-size: 1.3rem;
     margin: .3rem .65rem .4rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .media-article-content span {
     display: inline-block;
@@ -559,8 +605,6 @@ input:-ms-input-placeholder {
     color: #ffeb3b;
 }
 .topic-article {
-    width: 95.6%;
-    margin: 0 auto;
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
@@ -603,23 +647,39 @@ input:-ms-input-placeholder {
     /*注意补充完全！！*/
     box-sizing: border-box;
 }
-.back {
-    line-height: 2rem;
+/*.back {
+    font-size: 1.1rem;
+    line-height: 2.5rem;
     position: fixed;
     bottom: 1.1rem;
     left: 1.9rem;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     text-align: center;
     color: #ffeb3b;
-    border-radius: 1rem;
-    background-color: rgba(33 , 33, 33, .54);
-}
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.54);
+}*/
 /*---------------文章详情------------------*/
-.article p {
-    padding-bottom: 2.3rem;
+.article {
+    padding-bottom: 5rem;
+}
+.article-content p {
+    font-size: 18px;
     line-height: 1.7;
+    width: 91.1%;
+    margin: 0 auto;
+    margin-bottom: 20px;
     text-align: justify;
+    word-break: break-all;
+}
+
+.article-content .content {
+    text-align: center;
+}
+.article-content .content img {
+    max-width: 100%;
+    margin: 10px 0;
 }
 .article .intro {
     overflow: hidden;
@@ -645,31 +705,30 @@ input:-ms-input-placeholder {
     vertical-align: bottom;
 }
 .article-content {
-    width: 91.1%;
-    margin: 0 auto;
     margin-top: 1.9rem;
 }
 .article-content .date {
     margin-bottom: 1.2rem;
     color: #ffeb3b;
     font-size: .86rem;
+    padding: 0 1.34rem;
 }
 .article-content .title {
-    margin-bottom: 2.3rem;
-    font-size: 1.5rem;
-}
-.article-content {
+    margin-bottom: 3.5rem;
+    font-size: 2.2rem;
+    padding: 0 1.34rem;
     text-align: justify;
 }
 .article .article-back,
 .article .article-collect,
 .article .article-share {
-    line-height: 2.6rem;
+    line-height: 3rem;
+    font-size: 1.5rem;
     position: fixed;
     z-index: 1;
     bottom: 1.4rem;
-    width: 2.6rem;
-    height: 2.6rem;
+    width: 3rem;
+    height: 3rem;
     text-align: center;
     color: #ffeb3b;
     border: 1px solid #ffeb3b;

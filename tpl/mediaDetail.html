@@ -5,27 +5,28 @@
         <p>艺术，是才艺和技术的统称，词义很广，后慢慢加入各种优质思想，而演化成一种美，思想</p>
         <div class="media-activity">
             <div class="article-num">
-                <div class="circle">125</div>
+                <div class="circle">0</div>
                 <span>文章</span>
             </div>
             <div class="fans-num">
-                <div class="circle">79</div>
+                <div class="circle">0</div>
                 <span>粉丝</span>
             </div>
             <div class="focus">
-                <div class="circle"><i class="icon-heart-empty"></i></div>
-                <span>关注</span>
+                <div class="circle" ng-click="collect()"><i ng-class="{true: 'icon-heart', false: 'icon-heart-empty'}[hasCollect]"></i></div>
+                <span ng-if="hasCollect">已关注</span>
+                <span ng-if="!hasCollect">关注</span>
             </div>     
         </div>
     </div>
     <ul class="media-article-list">
-        <li class="media-article-item" ng-repeat="item in [1,2,3,4,5,6,7,8]">
+        <li class="media-article-item" ng-repeat="item in articleList">
             <div class="media-article-content">
-                <div class="title">动漫音乐节</div>
-                <span><i class="icon-attach"></i>艺术殿堂</span>
-                <span><i class="icon-tags"></i>某专题</span>
+                <div class="title">{{item.article_title}}</div>
+                <span><i class="icon-attach"></i>{{item.article_media_name}}</span>
+                <span><i class="icon-tags"></i>{{item.article_topic_name}}</span>
             </div>
         </li>
     </ul>
 </div>
-<div class="back" ng-click="back();"><i class="icon-left-open-big"></i></div>
+<!-- <div class="back" ng-click="back();"><i class="icon-left-open-big"></i></div> -->

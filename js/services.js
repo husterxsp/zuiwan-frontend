@@ -29,7 +29,7 @@ angular.module('services', [])
                 return service.articles;
             }
             var deferred = $q.defer(); // 声明延后执行，表示要去监控后面的执行
-            $http({method: 'GET', url: '/zuiwan-backend/index.php/article/get_article'})
+            $http({method: 'GET', url: 'http://115.28.75.190/zuiwan-backend/index.php/article/get_article'})
             .success(function(data) {
                 console.log(data);
                 deferred.resolve(data);  // 声明执行成功，即http请求数据成功，可以返回数据了

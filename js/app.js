@@ -70,3 +70,15 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
             controller: 'ArticleCtrl'
         })
 })
+
+myApp.controller('AppCtrl', function($scope){
+
+    var hour = (new Date()).getHours();
+    $scope.mode = {};
+    if ( hour > -1 && hour < 23) {
+        $scope.mode.day = true;
+    }else {
+        $scope.mode.day = false;
+    }
+
+})

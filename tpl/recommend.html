@@ -4,7 +4,7 @@
             <ul>
                 <li>
                     <div class="content">
-                        <div class="title">诗歌，离我们只有0.5m111111111</div>
+                        <div class="title">诗歌，离我们只有0.5m</div>
                         <span><i class="icon-attach"></i>艺术殿堂</span>
                         <span><i class="icon-tags"></i>某专题</span>
                         <p>“汉诗墙”是该艺术中心漫行书店台阶两边的墙，墙面装满书架，书架上所有图书均为《汉诗》编辑部所赠，共有从2008年3月至今出版的30种、6000多册《汉诗》。</p>      
@@ -12,7 +12,7 @@
                 </li>
                 <li>
                     <div class="content">
-                        <div class="title">诗歌，离我们只有0.5m222222222</div>
+                        <div class="title">诗歌，离我们只有0.5m</div>
                         <span><i class="icon-attach"></i>艺术殿堂</span>
                         <span><i class="icon-tags"></i>某专题</span>
                         <p>“汉诗墙”是该艺术中心漫行书店台阶两边的墙，墙面装满书架，书架上所有图书均为《汉诗》编辑部所赠，共有从2008年3月至今出版的30种、6000多册《汉诗》。</p>      
@@ -20,23 +20,29 @@
                 </li>
                 <li>
                     <div class="content">
-                        <div class="title">诗歌，离我们只有0.5m33333333</div>
+                        <div class="title">诗歌，离我们只有0.5m</div>
                         <span><i class="icon-attach"></i>艺术殿堂</span>
                         <span><i class="icon-tags"></i>某专题</span>
                         <p>“汉诗墙”是该艺术中心漫行书店台阶两边的墙，墙面装满书架，书架上所有图书均为《汉诗》编辑部所赠，共有从2008年3月至今出版的30种、6000多册《汉诗》。</p>      
                     </div>
                 </li>
             </ul>
+            <div class="dot">
+                <span ng-class="{ active: slideIndex == 0 }"></span>
+                <span ng-class="{ active: slideIndex == 1 }"></span>
+                <span ng-class="{ active: slideIndex == 2 }"></span>
+            </div>
         </div>
     </div>
     <div class="line"></div>
     <span class="other">others</span>
     <ul class="acticle">
-        <li ng-repeat="item in [1,2,3]" ui-sref="article({articleId: $index})">
+        <li ng-repeat="item in recommendList" ui-sref="article({articleId: item.id})" 
+                style="background-image:url({{item.article_img}})">
             <div class="content">
-                <div class="title">test</div>
-                <span><i class="icon-attach"></i>艺术殿堂</span>
-                <span><i class="icon-tags"></i>某专题</span>
+                <p class="title">{{item.article_title}}</p>
+                <span><i class="icon-attach-1"></i>{{item.article_media_name}}</span>
+                <span><i class="icon-tags"></i>{{item.article_topic_name}}</span>
             </div>
         </li>
     </ul>        

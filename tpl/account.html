@@ -2,8 +2,8 @@
     <div class="me">
         <img src="img/avatar.png" alt="" class="avatar">
         <div class="set">
-            <div class="name">sunshine</div>
-            <i class="icon-cog-outline"></i><i class="icon-comment-empty"></i>
+            <div class="name">{{userInfo.username}}</div>
+            <a class="switch" ng-click="switchMode()">场景切换</a>
         </div>
     </div>
     <div class="attention">
@@ -13,26 +13,27 @@
         </div>
         <div class="scroll">
             <ul class="attention-list">
-                <li ng-repeat="item in [1,2,3,4,5,6]">
+<!--                 <li ng-repeat="item in [1,2,3,4,5,6]">
                     <img src="img/attention.png" alt="">
                     <p>华中科技大学学生会</p>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
     <div class="collect">
         <div class="title">
-            <i class="icon-star-half-alt"></i>
+            <i class="icon-star-empty"></i>
             <span>我收藏的文章</span>
         </div>
         <ul>
-            <li ng-repeat="item in [1,2,3,4,5,6]">
-                <div class="content">
-                    <div class="title">动漫音乐节</div>
-                    <span><i class="icon-attach"></i>艺术殿堂</span>
-                    <span><i class="icon-tags"></i>某专题</span>
-                </div>
-            </li>
+        <li ng-repeat="item in userInfo.collect_article" ui-sref="article({articleId: item.id})" 
+                >
+            <div class="content">
+                <p class="title">{{item.article_title}}</p>
+                <span><i class="icon-attach-1"></i>{{item.article_media_name}}</span>
+                <span><i class="icon-tags"></i>{{item.article_topic_name}}</span>
+            </div>
+        </li>
         </ul>
     </div>
 </div>
