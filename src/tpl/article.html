@@ -1,0 +1,20 @@
+<div class="article">
+    <div class="intro">
+        <img src="{{article.media.media_avatar}}" ui-sref="mediaDetail({mediaId: item.id})">
+        <div class="media-author">
+            <div class="article-media">{{article.media.media_name}}</div>
+            <div class="article-author"><span>author</span>{{article.article_author}}</div>
+        </div>
+    </div>
+    <img class="article-img" src="{{article.article_img}}" alt="">
+    <div class="article-content">
+        <div class="date">{{article.create_time}}</div>
+        <div class="title">{{article.article_title}}</div>
+        <div ng-bind-html="article.article_content" class="content"></div>
+    </div>
+    <div class="article-collect" ng-click="collect()">
+        <i ng-class="{true: 'icon-heart', false: 'icon-heart-empty'}[hasCollect]"></i>
+    </div>
+    <div class="article-share"><i class="icon-export"></i></div>
+</div>
+<history-back></history-back>

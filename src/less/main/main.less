@@ -1,0 +1,104 @@
+@import "var.less";
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+ul,
+ol,
+li,
+p,
+span,
+input,
+button,
+img,
+a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+html {
+    height: 100%;
+}
+body {
+    font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    position: relative;
+    height: 100%;
+    color: #fff;
+    -webkit-tap-highlight-color: rgba(0,0,0,0); 
+}
+h3 {
+    font-size: 1.7em;
+    margin: 1.7rem 1.34rem;
+}
+a {
+    text-decoration: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+ul {
+    list-style: none;
+}
+input {
+    outline: none;
+}
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 768px;
+    min-height: 100%;
+    margin: 0 auto;
+    background-color: #212121;
+}
+.tab-hold {
+    position: relative;
+    height: 4.5rem;
+    ul.tab {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        max-width: 768px;
+        margin: 0 auto;
+        text-align: center;
+        border-top: 1px solid #bdbdbd;
+        background-color: #161616;
+        li {
+            float: left;
+            width: 25%;
+            padding: .4rem 0;
+            i {
+                font-size: 18px;
+            }
+            &:hover {
+                cursor: pointer;
+            }
+            &.active {
+                color: @yellow;
+            }
+        }
+    }
+}
+
+.history-back {
+    line-height: 3rem;
+    font-size: 1.5rem;
+    position: fixed;
+    z-index: 1;
+    bottom: 1.4rem;
+    left: 1.8rem;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    color: @yellow;
+    border: 1px solid @yellow;
+    border-radius: 2.6rem;
+    background-color: rgba(33, 33, 33, .54);  
+}

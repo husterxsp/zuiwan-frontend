@@ -1,0 +1,95 @@
+@import "var.less";
+
+.media {
+    width: 95.56%;
+    margin: 0 auto;
+    li {
+        position: relative;
+        padding: 1.3rem 1.95rem 1.95rem 5.6rem;
+        border-bottom: 1px solid #757575;
+        .media-logo {
+            position: absolute;
+            left: 0.6rem;
+            top: 2.6rem;
+            width: 3.7rem;
+            height: 3.7rem;
+            border-radius: 50%;
+        }
+        .content {
+            .title {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+.media-detail {
+    background: url(../img/media-detail-back.png) no-repeat top left/100% auto;
+    .intro {
+        width: 21rem;
+        margin: 0 auto;
+        padding-top: 1.3rem;
+        text-align: center;
+        img {
+            width: 6.5rem;
+            /*消除图片底部的边距*/
+            vertical-align: bottom;
+        }
+        .name {
+            font-size: 1.3rem;
+            margin: 1.3rem 0;
+        }
+        & > p {
+            margin-bottom: 1.9rem;
+        }
+        .activity {
+            overflow: hidden;
+            width: 100%;
+            .circle {
+                font-size: 1.2rem;
+                line-height: 4rem;
+                width: 4rem;
+                height: 4rem;
+                margin-bottom: .3rem;
+                color: @yellow;
+                border: 1px solid @yellow;
+                border-radius: 4rem;
+            }
+            & > div {
+                float: left;
+                width: 4rem;
+                margin: 0 1.5rem 2rem 1.5rem;
+            }
+        }
+    }
+    .article-list {
+        overflow: hidden;
+        .article-item {
+            position: relative;
+            float: left;
+            width: 46.67%;
+            padding-top: 46.67%;
+            margin-left: 2.22%;
+            margin-bottom: 2.22%;
+            background: no-repeat center/cover;
+            background-image: url(../img/recommend-back.png);
+            .article-content {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                .title {
+                    font-size: 1.3rem;
+                    margin: .3rem .65rem .4rem;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                span {
+                    display: inline-block;
+                    margin-bottom: .3rem;
+                    margin-left: .65rem;
+                }
+            }
+        }
+    }
+}

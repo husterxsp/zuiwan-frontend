@@ -1,0 +1,37 @@
+<div class="media-detail">
+    <div class="intro">
+        <img src="{{mediaInfo.media_avatar}}" alt="">
+        <div class="name">{{mediaInfo.media_name}}</div>
+        <p>{{mediaInfo.media_intro}}</p>
+        <div class="activity">
+            <div class="article-num">
+                <div class="circle">{{mediaInfo.article_count}}</div>
+                <span>文章</span>
+            </div>
+            <div class="fans-num">
+                <div class="circle">{{mediaInfo.fans_num}}</div>
+                <span>粉丝</span>
+            </div>
+            <div class="focus">
+                <div class="circle" ng-click="focus()">
+                    <i ng-class="{true: 'icon-heart', false: 'icon-heart-empty'}[isfocus]"></i>
+                </div>
+                <span ng-if="isfocus">已关注</span>
+                <span ng-if="!isfocus">关注</span>
+            </div>     
+        </div>
+    </div>
+    <ul class="article-list">
+        <li class="article-item" 
+            ng-repeat="item in mediaInfo.articles" 
+            ui-sref="article({articleId: item.id})" 
+            style="background-image: url({{item.article_img}})">
+            <div class="article-content" style="background-color: {{item.article_color}}">
+                <div class="title">{{item.article_title}}</div>
+                <span><i class="icon-attach"></i>{{item.article_media_name}}</span>
+                <span><i class="icon-tags"></i>{{item.article_topic_name}}</span>
+            </div>
+        </li>
+    </ul>
+</div>
+<history-back></history-back>

@@ -1,0 +1,116 @@
+.container {
+    background-color: #fafafa;
+}
+ul.tab {
+    color: #616161;
+    background-color: rgba(238, 238, 238, .9);
+}
+ul.tab li.active {
+    color: rgb(63, 81, 181);
+}
+.recommend .other {
+    color: #ff4081;
+    background-color: #fafafa;
+}
+.recommend .line {
+    background: linear-gradient(to right, rgba(63, 81, 181, .1), rgba(63, 81, 181, .8) 3%, rgba(63, 81, 181, .8) 97%, rgba(63, 81, 181, .1));
+}
+.recommend #slide .dot span.active {
+    background-color: rgba(255, 64, 129, .8);
+}
+.media {
+    color: #000;
+}
+.set {
+    color: #000;
+}
+.attention {
+    color: #000;
+}
+.attention .title i,
+.collect .title i {
+    color: #ff4081;
+}
+.collect > .title {
+    color: #000;
+}
+/*文章 article----------------*/
+.article-author {
+    color: #3f51b5;
+}
+.article .article-author span {
+    color: #ff4081;
+}
+.article-content .date {
+    color: #ff4081;
+}
+.article {
+    color: #000;
+}
+.article-content .title {
+    color: #3f51b5;
+}
+.history-back {
+    color: #f8bbd0;
+    border-color: #f8bbd0; 
+}
+.article .article-collect, .article .article-share {
+    color: #f8bbd0;
+    border-color: #f8bbd0;
+}
+/*登录，注册------------------*/
+.login,
+.register {
+    color: #3f51b5;
+    background: #fff !important;
+}
+.login-content input,
+.register-content input {
+    color: #ff4081;
+    border-color: #9f9f9f;
+    background-color: #ededed;
+}
+.login-content .to-register a {
+    color: #3f51b5;
+}
+.login-button,
+.register-button {
+    color: #fff;
+    background-color: #ff4081;
+}
+input::-webkit-input-placeholder {
+    color: #ff4081;
+}
+/*媒体media-----------*/
+.media-detail .intro .circle {
+    color: #ff4081;
+    border: 1px solid #ff4081;
+}
+.media-detail .intro .circle ~ span {
+    color: #3f51b5;
+}
+.media-detail {
+    background-image: url(../img/media-detail-back-1.png); 
+}
+.media-detail .intro {
+    color: #000;
+}
+/*专题topic-----------*/
+.topic-article {
+    color: #000;
+}
+.topic-detail .intro-content .article-num .number {
+    color: #ff4081;
+}
+.topic-article .title {
+    color: #3f51b5;
+}
+.topic-article .summary {
+    border-color: #3f51b5;
+}
+.topic-article .topic-media {
+    color: #3f51b5;
+}
+.number {
+    color: #ff4081;
+}

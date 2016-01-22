@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp" ng-controller="AppCtrl">
+
 <head>
     <title>醉晚亭</title>
     <meta charset="utf-8">
@@ -16,29 +17,28 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="醉晚亭">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="robots" content="index,follow"/>
+    <meta name="robots" content="index,follow" />
     <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+    <link rel="stylesheet" href="dist/css/main.css">
+    <link rel="stylesheet" href="dist/css/fontello.css">
+    <link ng-if="mode.day" rel="stylesheet" href="dist/css/day.css">
 
-    <link rel="stylesheet" href="css/main.css">
-    <link ng-if="mode.day" rel="stylesheet" href="css/day.css">
-    <link rel="stylesheet" href="css/fontello.css">
-    <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-ui-router.min.js"></script>
-    <script src="lib/angular-md5.min.js"></script>
-    <script src="lib/angular-sanitize.min.js"></script>
-    <script src="lib/jquery.min.js"></script>
-    <script src="lib/fastclick.min.js"></script>
-    <script src="lib/iscroll.js"></script>
-    <script src="lib/swipe.js"></script>
-
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/main.js"></script>
+    <script src="dist/lib/angular.min.js"></script>
+    <script src="dist/lib/angular-ui-router.min.js"></script>
+    <script src="dist/lib/angular-md5.min.js"></script>
+    <script src="dist/lib/angular-sanitize.min.js"></script>
+    <script src="dist/lib/jquery.min.js"></script>
+    <script src="dist/lib/fastclick.min.js"></script>
+    <script src="dist/lib/iscroll.js"></script>
+    <script src="dist/lib/swipe.js"></script>
+    <script src="dist/js/build.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div ui-view></div>
     </div>
+
 </body>
+
 </html>

@@ -1,0 +1,82 @@
+@import "var.less";
+
+.article {
+    padding-bottom: 5rem;
+    .intro {
+        overflow: hidden;
+        padding: 1.3rem;
+        img {
+            float: left;
+            width: 3.2rem;
+            margin-right: 1.3rem;
+        }
+        .media-author {
+            float: left;
+            .article-media {
+                margin-bottom: .3rem;
+            }
+            .article-author {
+                span{
+                    margin-right: .3rem;
+                    color: @yellow;
+                }
+            }
+        }
+    }
+    .article-img {
+        width: 100%;
+        vertical-align: bottom;
+    }
+    .article-content {
+        margin-top: 1.9rem;
+        .date {
+            margin-bottom: 1.2rem;
+            color: @yellow;
+            font-size: .86rem;
+            padding: 0 1.34rem;
+        }
+        .title {
+            margin-bottom: 3.5rem;
+            font-size: 2.2rem;
+            padding: 0 1.34rem;
+            text-align: justify;
+        }
+        .content {
+            text-align: center;
+            p {
+                font-size: 18px;
+                line-height: 1.7;
+                width: 91.1%;
+                margin: 0 auto;
+                margin-bottom: 20px;
+                text-align: justify;
+                word-break: break-all;
+            }
+            img {
+                max-width: 100%;
+                margin: 10px 0;
+            }
+        }
+       
+    }
+    .article-collect, .article-share {
+        line-height: 3rem;
+        font-size: 1.5rem;
+        position: fixed;
+        z-index: 1;
+        bottom: 1.4rem;
+        width: 3rem;
+        height: 3rem;
+        text-align: center;
+        color: @yellow;
+        border: 1px solid @yellow;
+        border-radius: 2.6rem;
+        background-color: rgba(33, 33, 33, .54);
+    }
+    .article-collect {
+        right: 6rem;
+    }
+    .article-share {
+        right: 1.4rem;
+    }
+}

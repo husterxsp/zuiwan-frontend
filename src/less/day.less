@@ -1,0 +1,171 @@
+@pink: #ff4081;
+@violet: #3f51b5;
+
+.container {
+    background-color: #fafafa;
+}
+.tab-hold {
+    ul.tab {
+        color: #616161;
+        background-color: rgba(238, 238, 238, .9);
+        li {
+            &.active {
+                color: @violet;
+            }
+        }
+    }
+}
+
+.recommend {
+    .other {
+        color: @pink;
+        background-color: #fafafa;
+    }
+    .line {
+        background: linear-gradient(to right, fade(@violet, 10%), fade(@violet, 80%) 3%, fade(@violet, 80%) 97%, fade(@violet, 10%));
+    }
+}
+
+.recommend #slide .dot span.active {
+    background-color: fade(@pink, 10%);
+}
+
+.account {
+    .set {
+        color: #000;
+    }
+    .attention {
+        & > .title{
+            color: @violet;
+            i {
+                color: @pink;
+            } 
+        }
+        .attention-list {
+            color: #000;
+        }
+    }
+    .collect {
+        & > .title {
+            color: @violet;
+            i {
+                color: @pink;
+            }
+        }
+    }
+    
+}
+.article {
+    color: #000;
+    .intro {
+        .media-author {
+            .article-media {
+                color: @violet;
+            }
+            .article-author {
+                color: @violet;
+                span {
+                    color: @pink;
+                }
+            }
+        }
+        
+    }
+    .article-content {
+        .date {
+            color: @pink;
+        }
+        .title {
+            color: @violet;
+        }
+    }
+    .article-collect,.article-share {
+        color: #f8bbd0;
+        border-color: #f8bbd0;
+    }
+}
+
+.history-back {
+    color: #f8bbd0;
+    border-color: #f8bbd0; 
+}
+
+/*登录，注册------------------*/
+.login,
+.register {
+    color: @violet;
+    background: #fff !important;
+}
+.login-content input,
+.register-content input {
+    color: @pink;
+    border-color: #9f9f9f;
+    background-color: #ededed;
+}
+.login-content .to-register a {
+    color: @violet;
+}
+.login-button,
+.register-button {
+    color: #fff;
+    background-color: @pink;
+}
+input::-webkit-input-placeholder {
+    color: @pink;
+}
+.media {
+    color: #000;
+}
+.media-detail {
+    background-image: url(../img/media-detail-back-1.png);
+    .intro{
+        color: #000;
+        .activity .circle {
+            color: @pink;
+            border: 1px solid @pink;
+            ~ span {
+                color: @violet;
+            }
+        }
+    }
+}
+.topic {
+    li {
+        .content {
+            .title .number {
+                color: @pink;
+            }
+        }
+    }
+}
+.topic-detail {
+    .topic-intro {
+        .intro-content {
+            .article-num .number {
+                color: @pink;
+            }
+        }
+    }
+    .topic-article {
+        color: #000;
+        .title {
+            color: @violet;
+        }
+        .topic-media {
+            color: @violet;
+        }
+        .topic-content {
+            .date {
+                .day {
+                    color: @pink;
+                }
+                .month {
+                    color: @violet;
+                }
+            }
+            .summary {
+                border-color: @violet;
+            }
+        }
+    }
+}
