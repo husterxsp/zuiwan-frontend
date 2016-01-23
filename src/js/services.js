@@ -4,7 +4,6 @@ angular.module('services', [])
 
     return {
         get: function(name) {
-            console.log("hello");
             var cookieName = encodeURIComponent(name) + "=";
             var cookieStart = document.cookie.indexOf(cookieName);
             var cookieValue = "";
@@ -18,19 +17,8 @@ angular.module('services', [])
             }
             return cookieValue;
         },
-        // set: function(name, value, expires) {
-        //     var cookieText = encodeURIComponent(name) + "=" + encodeURIComponent(value);
-        //     if (expires instanceof Date) {
-        //         cookieText += "; expires=" + expires.toGMTString();
-        //     }
-        //     console.log(cookieText);
-        //     document.cookie = cookieText;
-        // },
         exit: function() {
-            console.log("删除");
-            var cookieText = encodeURIComponent("zw_username") + "=" + encodeURIComponent(" ") + "; expires=" + (new Date(0)).toGMTString();
-            console.log(cookieText);
-            document.cookie = cookieText;
+            document.cookie = 'zw_username=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;';
         }
     };
 })

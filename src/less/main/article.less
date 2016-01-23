@@ -43,8 +43,8 @@
         }
         .content {
             text-align: center;
+            font-size: 18px;
             p {
-                font-size: 18px;
                 line-height: 1.7;
                 width: 91.1%;
                 margin: 0 auto;
@@ -54,10 +54,41 @@
             }
             img {
                 max-width: 100%;
-                margin: 10px 0;
+                margin: 10px auto;
             }
         }
-       
+    }
+    .line {
+        width: 91.1%;
+        margin: 0 auto;
+        border-bottom: 1px solid #424242;
+        margin-bottom: 2.7rem;
+    }
+    .article-topic {
+        position: relative;
+        color: #fff;
+        width: 100%;
+        padding-top: 36%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-top: 11.1%;
+            padding-left: 8.8%;
+            .title {
+                margin-bottom: 9%;
+                .title-h {
+                    font-size: 1.8rem;
+                    margin-right: .7rem;
+                }
+                .number {
+                    color: @pink;
+                }
+            }
+        }
     }
     .article-collect, .article-share {
         line-height: 3rem;

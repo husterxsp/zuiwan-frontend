@@ -1,4 +1,4 @@
-<div class="account" ng-cloak>
+<div class="account" ng-controller="AccountCtrl">
     <div class="me">
         <img src="{{userInfo.user_avatar}}" alt="" class="avatar">
         <div class="set">
@@ -14,7 +14,8 @@
         </div>
         <div class="scroll">
             <ul class="attention-list">
-                <li ng-repeat="item in userInfo.medias">
+                <li ng-repeat="item in userInfo.medias" 
+                    ui-sref="mediaDetail({mediaId: item.id})">
                     <img src="{{item.media_avatar}}" alt="">
                     <p>{{item.media_name}}</p>
                 </li>
