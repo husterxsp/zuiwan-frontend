@@ -1,25 +1,6 @@
 angular.module("RecommendModule", [])
     .controller('RecommendCtrl', ['$scope', '$http', function($scope, $http) {
 
-        $scope.slideIndex = 0;
-        $scope.mySwipe = new Swipe($(".recommend #slide")[0], {
-            startSlide: 0,
-            speed: 400,
-            auto: 3000,
-            continuous: true,
-            disableScroll: false,
-            stopPropagation: false,
-            callback: function(index, elem) {
-                //这里有点问题
-                // $scope.slideIndex = index;
-                // console.log($scope);
-                $(".recommend #slide .dot span").eq(index).addClass('active').siblings().removeClass('active');
-            },
-            transitionEnd: function(index, elem) {
-
-            }
-        });
-
         $http({
             method: 'GET',
             url: '/zuiwan-backend/index.php/article/get_recommend'
@@ -27,6 +8,24 @@ angular.module("RecommendModule", [])
             console.log(res);
             $scope.bannerList = res.data.banner;
             $scope.recommendList = res.data.recommend;
+
+            //轮播部分
+            function slide(i) {
+                // var left = 100*i;
+                // left = "-"+left+"%";
+                // $("#slide > ul").css("left", left);
+                $("#slide > ul").css("left", "-" + 100 * i + "%");
+                $("#slide .dot span").eq(i).addClass("active").siblings().removeClass("active");
+            }
+            var index = 0;
+            var sliderID = setInterval(function() {
+                slide(index);
+                index++;
+                if (index == 3) {
+                    index = 0;
+                }
+            }, 3000);
+
         }, function errorCallback(res) {
             console.log(res);
         });
@@ -104,6 +103,7 @@ angular.module("MediaModule", [])
             $http({
                 method: 'POST',
                 url: '/zuiwan-backend/index.php/user/focus_media',
+                // header: {'Content-Type': 'application/x-www-form-urlencoded'}
                 data: {
                     media_id: $state.params.mediaId,
                     action: action
@@ -195,7 +195,7 @@ angular.module("AccountModule", [])
     }]);
 
 angular.module("ArticleModule", ["ngSanitize"])
-    .controller('ArticleCtrl', ['$scope', '$http', '$state', function($scope, $http, $state) {
+    .controller('ArticleCtrl', ['$scope', '$http', '$state', 'cookieService', function($scope, $http, $state, cookieService) {
 
         $scope.hasCollect = false;
         $http({
@@ -213,6 +213,10 @@ angular.module("ArticleModule", ["ngSanitize"])
         });
 
         $scope.collect = function() {
+            if (!cookieService.get('zw_username')) {
+                alert("收藏文章请先登录！");
+                return false;
+            }
             $scope.hasCollect = !$scope.hasCollect;
             var action;
             if ($scope.hasCollect) {

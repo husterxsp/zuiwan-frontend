@@ -1,5 +1,4 @@
-@import "var.less";
-
+@import 'var.less';
 .recommend {
     width: 100%;
     #slide-hold {
@@ -17,23 +16,34 @@
             ul {
                 position: absolute;
                 overflow: hidden;
-                width: 400%;
+                left: 0;
+                width: 300%;
                 height: 100%;
+                -webkit-transition: all .5s;
+                   -moz-transition: all .5s;
+                     -o-transition: all .5s;
+                        transition: all .5s;
                 li {
                     position: relative;
                     float: left;
-                    width: 25%;
+                    width: 33.33%;
                     height: 100%;
                     background: no-repeat center/cover;
-                    background-image: url(../img/recommend-slide.png);
                     .content {
                         position: absolute;
                         top: 0;
                         left: 0;
+                        box-sizing: border-box;
+                        width: 100%;
+                        height: 100%;
                         padding: 17% 7% 0 8%;
+                        background-color: fade(#333, 40%);
                         .title {
                             font-size: 1.7rem;
+                            overflow: hidden;
                             margin-bottom: 4%;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
                         }
                         p {
                             display: -webkit-box;
@@ -50,6 +60,7 @@
             }
             .dot {
                 position: absolute;
+                z-index: 1;
                 right: 6%;
                 bottom: 7%;
                 overflow: hidden;

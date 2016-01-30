@@ -60,14 +60,15 @@ gulp.task('clean', function () {
         .pipe(load.clean());
 });
 
-gulp.task('build', ['html', 'css', 'js', 'font', 'img']);
+// gulp.task('build', ['html', 'css', 'js', 'font', 'img']);
+gulp.task('build', ['html', 'css', 'js', 'font']);
 
 gulp.task('watch', function () {
     gulp.watch('src/tpl/*.html', ['html']);
     gulp.watch(['src/css/*', 'src/less/**'], ['css']);
     gulp.watch(['src/js/*.js', 'src/lib/*.js'], ['js']);
     gulp.watch('src/font/*', ['font']);
-    gulp.watch('img', ['img']);
+    // gulp.watch('img', ['img']);
 });
 
 gulp.task('default', ['clean'], function () {
