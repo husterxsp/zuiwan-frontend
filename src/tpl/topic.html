@@ -1,14 +1,27 @@
-<ul class="topic">
-    <li ng-repeat="item in topicList" 
-        ui-sref="topicDetail({topicId: item.id})"
-        style="background-image: url({{item.topic_img}})">
-        <div class="content">
-            <div class="title">
-                <span class="title-h">{{item.topic_name}}</span>
-                <span><span class="number">{{item.article_count}}</span>篇</span>
+<div class="topic">
+    <div class="overlay" ng-if="showResult" ng-click="hideResult()"></div>
+    <div class="search">
+        <input type="text" ng-model="searchText" ng-keyup="myKeyup($event)">
+        <i class="icon-search" ng-click="search(searchText)"></i>
+        <ul class="result" ng-if="showResult">
+            <li ng-if="!searchResult.length">未搜到相关文章</li>
+            <li ng-repeat="item in searchResult" 
+                ui-sref="article({articleId: item.article.id})"
+                ng-bind-html="item.highlight[0]">
+            </li>
+        </ul>
+    </div>
+    <ul class="topicList">
+        <li ng-repeat="item in topicList" 
+            ui-sref="topicDetail({topicId: item.id})"
+            style="background-image: url({{item.topic_img}})">
+            <div class="content">
+                <div class="title">
+                    <span class="title-h">{{item.topic_name}}</span>
+                    <span><span class="number">{{item.article_count}}</span>篇</span>
+                </div>
+                <p>{{item.topic_intro}}</p>
             </div>
-            <p>{{item.topic_intro}}</p>
-        </div>
-    </li>
-    <!-- <input type="text" class="search"> -->
-</ul>
+        </li>
+    </ul>
+</div>

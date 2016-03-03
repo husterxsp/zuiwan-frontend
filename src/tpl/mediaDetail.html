@@ -1,15 +1,19 @@
 <div class="media-detail">
     <div class="intro">
-        <img src="{{mediaInfo.media_avatar}}" alt="">
+        <div class="img" style="background-image: url({{mediaInfo.media_avatar}})"></div>
         <div class="name">{{mediaInfo.media_name}}</div>
         <p>{{mediaInfo.media_intro}}</p>
         <div class="activity">
             <div class="article-num">
-                <div class="circle">{{mediaInfo.article_count}}</div>
+                <div class="circle">
+                    <span>{{mediaInfo.articles.length}}</span>
+                </div>
                 <span>文章</span>
             </div>
             <div class="fans-num">
-                <div class="circle">{{mediaInfo.fans_num}}</div>
+                <div class="circle">
+                    <span>{{mediaInfo.fans_num}}</span>
+                </div>
                 <span>粉丝</span>
             </div>
             <div class="focus">
@@ -28,8 +32,8 @@
             style="background-image: url({{item.article_img}})">
             <div class="article-content" style="background-color: {{item.article_color}}">
                 <div class="title">{{item.article_title}}</div>
-                <span><i class="icon-attach"></i>{{item.article_media_name}}</span>
-                <span><i class="icon-tags"></i>{{item.article_topic_name}}</span>
+                <span><i class="icon-media"></i>{{item.article_media_name}}</span>
+                <span><i class="icon-topic"></i>{{item.article_topic_name}}</span>
             </div>
         </li>
     </ul>

@@ -3,9 +3,9 @@ var load = require('gulp-load-plugins')();
 
 gulp.task('html', function() {
     gulp.src('src/tpl/*.html')
-        .pipe(load.sourcemaps.init())
-        .pipe(load.htmlmin({collapseWhitespace: true}))
-        .pipe(load.sourcemaps.write('.'))
+        .pipe(load.htmlmin({
+            collapseWhitespace: true
+        }))
         .pipe(gulp.dest('dist/tpl'))
 });
 
@@ -14,19 +14,13 @@ gulp.task('css', function() {
         .pipe(load.csso())
         .pipe(gulp.dest('dist/css'))
     gulp.src('src/less/*.less')
-        .pipe(load.sourcemaps.init())
         .pipe(load.less())
-        // .pipe(load.postcss([ load.autoprefixer() ]))
         .pipe(load.csso())
-        .pipe(load.sourcemaps.write('.'))
         .pipe(gulp.dest('dist/css'))
     gulp.src('src/less/main/*.less')
-        .pipe(load.sourcemaps.init())
         .pipe(load.less())
-        // .pipe(load.postcss([ load.autoprefixer() ]))
         .pipe(load.csso())
         .pipe(load.concat('main.css'))
-        .pipe(load.sourcemaps.write('.'))
         .pipe(gulp.dest('dist/css'))
 });
 
@@ -51,26 +45,27 @@ gulp.task('font', function() {
 
 gulp.task('img', function() {
     gulp.src('src/img/*')
-    .pipe(load.imagemin())
-    .pipe(gulp.dest('dist/img'))
+        .pipe(load.imagemin())
+        .pipe(gulp.dest('dist/img'))
 });
 
-gulp.task('clean', function () {
-    return gulp.src('dist', {read: false})
+gulp.task('clean', function() {
+    return gulp.src('dist', {
+            read: false
+        })
         .pipe(load.clean());
 });
 
-// gulp.task('build', ['html', 'css', 'js', 'font', 'img']);
-gulp.task('build', ['html', 'css', 'js', 'font']);
+gulp.task('build', ['html', 'css', 'js', 'font', 'img']);
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
     gulp.watch('src/tpl/*.html', ['html']);
     gulp.watch(['src/css/*', 'src/less/**'], ['css']);
     gulp.watch(['src/js/*.js', 'src/lib/*.js'], ['js']);
     gulp.watch('src/font/*', ['font']);
-    // gulp.watch('img', ['img']);
+    gulp.watch('img', ['img']);
 });
 
-gulp.task('default', ['clean'], function () {
+gulp.task('default', ['clean'], function() {
     gulp.start('build');
 });

@@ -6,17 +6,16 @@
             <div class="article-author"><span>author</span>{{article.article_author}}</div>
         </div>
     </div>
-    <img class="article-img" src="{{article.article_img}}" alt="">
+    <div class="article-img" style="background-image: url({{article.article_img}})">
+    </div>
     <div class="article-content">
-        <div class="date">{{article.create_time}}</div>
+        <div class="date">{{article.create_time | dateObj | day}}</div>
         <div class="title">{{article.article_title}}</div>
         <div ng-bind-html="article.article_content" class="content"></div>
     </div>
     <div class="line"></div>
-    <div class="article-topic" 
-        ui-sref="topicDetail({topicId: article.topic.id})"
-        style="background-image: url({{article.topic.topic_img}})">
-        <div class="content" >
+    <div class="article-topic" ui-sref="topicDetail({topicId: article.topic.id})" style="background-image: url({{article.topic.topic_img}})">
+        <div class="content">
             <div class="title">
                 <span class="title-h">{{article.topic.topic_name}}</span>
                 <span><span class="number">{{article.topic.article_count}}</span>篇</span>
@@ -27,6 +26,6 @@
     <div class="article-collect" ng-click="collect()">
         <i ng-class="{true: 'icon-star', false: 'icon-star-empty'}[hasCollect]"></i>
     </div>
-    <div class="article-share"><i class="icon-export"></i></div>
+    <!-- <div class="article-share"><i class="icon-share"></i></div> -->
 </div>
 <history-back></history-back>

@@ -1,11 +1,11 @@
 <div class="account" ng-controller="AccountCtrl">
     <div class="me">
-        <img src="{{userInfo.user_avatar}}" alt="" class="avatar">
-        <div class="set">
-            <div class="name">{{userInfo.username}}</div>
-            <a class="switch" ng-click="switchMode()">场景切换</a>
-            <div ng-click="exit()">退出登录</div>
-        </div>
+        <img src="dist/img/favicon.png" alt="" class="avatar">
+        <div class="name">{{userInfo.username}}</div>
+        <div class="exit" ng-click="exit()">退出</div>
+        <div class="mode" ng-click="switchMode()" ng-bind="mode.name"></div>
+        <!-- <div class="feedback" ng-click="feedback()">意见吐槽</div> -->
+        <a class="feedback" href="mailto:advice@sicun.org">意见吐槽</a>
     </div>
     <div class="attention">
         <div class="title">
@@ -15,7 +15,8 @@
         <div class="scroll">
             <ul class="attention-list">
                 <li ng-repeat="item in userInfo.medias" 
-                    ui-sref="mediaDetail({mediaId: item.id})">
+                    ui-sref="mediaDetail({mediaId: item.id})"
+                    repeat-finish="initScroll()">
                     <img src="{{item.media_avatar}}" alt="">
                     <p>{{item.media_name}}</p>
                 </li>
@@ -28,14 +29,21 @@
             <span>我收藏的文章</span>
         </div>
         <ul>
-        <li ng-repeat="item in userInfo.articles" ui-sref="article({articleId: item.id})" 
+            <li ng-repeat="item in userInfo.articles" 
+                ui-sref="article({articleId: item.id})" 
                 style="background-image:url({{item.article_img}})">
-            <div class="content" style="background-color: {{item.article_color}}">
-                <p class="title">{{item.article_title}}</p>
-                <span><i class="icon-attach-1"></i>{{item.article_media_name}}</span>
-                <span><i class="icon-tags"></i>{{item.article_topic_name}}</span>
-            </div>
-        </li>
+                <div class="content" style="background-color: {{item.article_color}}">
+                    <p class="title">{{item.article_title}}</p>
+                    <div class="type">
+                        <span><i class="icon-media"></i>{{item.article_media_name}}</span>
+                        <span><i class="icon-topic"></i>{{item.article_topic_name}}</span>
+                    </div>
+                </div>
+            </li>
         </ul>
+    </div>
+    <div class="feed" ng-if="showFeed">
+        <textarea ng-model="feedContent"></textarea>
+        <div class="send" ng-click="sendFeed()">提交反馈</div>
     </div>
 </div>

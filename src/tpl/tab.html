@@ -1,21 +1,19 @@
 <div ui-view></div>
-<div class="tab-hold">
-    <ul class="tab">
-        <li ui-sref="tab.recommend" ng-class="{ active: $state.includes('tab.recommend') }">
-            <i class="icon-hourglass"></i>
-            <div>推荐</div>
-        </li>
-        <li ui-sref="tab.topic" ng-class="{ active: $state.includes('tab.topic') }">
-            <i class="icon-tags"></i>
-            <div>专题</div>
-        </li>
-        <li ui-sref="tab.media" ng-class="{ active: $state.includes('tab.media') }">
-            <i class="icon-attach-1"></i>
-            <div>媒体</div>
-        </li>
-        <li ui-sref="tab.account" ng-class="{ active: $state.includes('tab.account') }">
-            <i class="icon-user"></i>
-            <div>我</div>
-        </li>
-    </ul>
+<div id="myTab">
+    <a ui-sref="tab.recommend" ng-class="{ active: $state.includes('tab.recommend') }">
+        <i class="icon-recommend"></i>
+        <span>推荐</span>
+    </a>
+    <a ui-sref="tab.topic" ng-class="{ active: $state.includes('tab.topic') }">
+        <i class="icon-topic"></i>
+        <span>专题</span>
+    </a>
+    <a ui-sref="tab.media" ng-class="{ active: $state.includes('tab.media') }">
+        <i class="icon-media"></i>
+        <span>媒体</span>
+    </a>
+    <a ui-sref="tab.me.account" ng-class="{ active: $state.includes('tab.me') }">
+        <i class="icon-user"></i>
+        <span>我</span>
+    </a>
 </div>

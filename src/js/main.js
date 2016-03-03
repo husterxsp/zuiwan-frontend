@@ -13,9 +13,9 @@
             var scale = (clientWidth - minWidth) / (maxWidth - minWidth);
             var fontSize = scale * (maxSize - minSize) + minSize;
 
-            if (fontSize > maxSize){
+            if (fontSize > maxSize) {
                 fontSize = maxSize;
-            }else if (fontSize < minSize){
+            } else if (fontSize < minSize) {
                 fontSize = minSize;
             }
             docEl.style.fontSize = fontSize + 'px';
@@ -28,4 +28,26 @@
 
 $(function() {
     FastClick.attach(document.body);
+
+    var animate = false;
+    var position = $(window).scrollTop();
+    $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+        if (scroll > position && !animate && $("#myTab").length) {
+            animate = true;
+            $("#myTab").animate({
+                "bottom": "-4.4rem",
+            }, 300, function() {
+                animate = false;
+            });
+        } else if (scroll < position && !animate && $("#myTab").length) {
+            animate = true;
+            $("#myTab").animate({
+                "bottom": "0",
+            }, 300, function() {
+                animate = false;
+            });
+        }
+        position = scroll;
+    });
 });

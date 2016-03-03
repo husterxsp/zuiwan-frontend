@@ -1,45 +1,101 @@
-@import "var.less";
-
+@import 'var.less';
 .topic {
-    .search {
-        font-family: inherit;
-        font-size: 1.2rem;
-        position: absolute;
+    .overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
         z-index: 1;
-        top: .4rem;
+    }
+    .search {
+        position: absolute;
+        z-index: 2;
+        top: 1%;
         left: 50%;
         width: 91.11%;
-        height: 2.3rem;
         margin-left: -45.55%;
-        margin-top: 1.2rem;
-        text-indent: 1.2rem;
-        color: #fff;
-        border-radius: 10px;
-        background-color: rgba(33, 33, 33, .5);
+        border-radius: 7px;
+        background-color: rgba(0, 0, 0, .5);
+        & > input {
+            line-height: 2.5rem;
+            height: 2.5rem;
+            font-family: inherit;
+            font-size: 1.2rem;
+            -webkit-box-sizing: border-box;
+               -moz-box-sizing: border-box;
+                -ms-box-sizing: border-box;
+                 -o-box-sizing: border-box;
+                    box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            padding-right: 3rem;
+            padding-left: 1rem;
+            color: #fff;
+            border-radius: 7px;
+            background-color: transparent;
+        }
+        i {
+            line-height: 2.5rem;
+            height: 2.5rem;
+            font-size: 1.6rem;
+            position: absolute;
+            top: 0;
+            right: .65rem;
+            color: @yellow;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .result {
+            font-size: 1.2rem;
+            width: 96%;
+            margin: 0 auto;
+            // border-top: 1px solid #505050;
+            border-top: 1px solid rgba(80, 80, 80, 0.7);
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-height: 75vh;
+            overflow-y: scroll;
+            & > li {
+                margin: 0 auto;
+                padding: .6rem 1rem;
+                // border-bottom: 1px solid #f5f5f5;
+                border-bottom: 1px solid rgba(80, 80, 80, 0.7);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                em {
+                    font-style: normal;
+                    color: @yellow;
+                }
+            }
+        }
     }
-    li {
+    .topicList li {
         position: relative;
         width: 100%;
-        margin-bottom: 3px;
-        // padding-top: 36%;
-        padding-top: 40%;
-        background-size: cover;
-        background-position: center;
+        padding-top: 35.55%;
         background-repeat: no-repeat;
-        // &:nth-child(1) {
-        //     padding-top: 44.4%;
-        //     .content {
-        //         padding-top: 20%;
-        //     }
-        // }
+        background-position: center;
+        background-size: cover;
+        &:nth-child(1) {
+            padding-top: 44.4%;
+            .content {
+                .title {
+                    margin-top: 18%;
+                }
+            }
+        }
         .content {
             position: absolute;
             top: 0;
             left: 0;
-            padding-top: 11.1%;
-            padding-left: 8.8%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .4);
             .title {
-                margin-bottom: 9%;
+                width: 82.22%;
+                margin: 8% auto 3%;
                 .title-h {
                     font-size: 1.8rem;
                     margin-right: .7rem;
@@ -49,16 +105,19 @@
                     color: @yellow;
                 }
             }
+            & > p {
+                width: 82.88%;
+                margin: 0 auto;
+            }
         }
     }
 }
 .topic-detail {
-    padding-bottom: 5rem;
     & > .topic-intro {
         position: relative;
         width: 100%;
         margin-bottom: .65rem;
-        padding-top: 71.1%;
+        padding-top: 75.55%;
         text-align: center;
         background: no-repeat center/cover;
         .intro-content {
@@ -67,17 +126,20 @@
             left: 0;
             width: 100%;
             height: 100%;
+            background: rgba(0, 0, 0, .4);
             .title {
-                font-size: 1.5rem;
-                margin-top: 6.2rem;
+                font-size: 1.6rem;
+                margin-top: 20%;
             }
-            p {
-                margin-top: 3.6rem;
+            > p {
+                width: 75.55%;
+                margin: 0 auto;
+                margin-top: 11.1%;
             }
             .article-num {
                 position: absolute;
-                right: 1.3rem;
-                bottom: 1.3rem;
+                right: 4.44%;
+                bottom: 8.88%;
                 .number {
                     color: @yellow;
                 }
@@ -85,31 +147,51 @@
         }
     }
     .topic-article {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        .title {
-            margin-bottom: 1.3rem;
-            margin-left: .65rem;
-            font-size: .7rem;
-            color: @yellow;
-
-        }
+        margin: 11.11% 0;
         .title-image {
+            position: relative;
             width: 100%;
-            /*消除底部边距*/
-            vertical-align: bottom;
+            padding-top: 57.78%;
+            background: no-repeat center/cover;
+            .title-content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                color: #fff;
+                background-color: rgba(0, 0, 0, .4);
+                .article-title {
+                    font-size: 1.6rem;
+                    overflow: hidden;
+                    width: 73.33%;
+                    margin: 0 auto;
+                    margin-top: 15.55%;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                .topic-name {
+                    overflow: hidden;
+                    width: 73.33%;
+                    margin: 0 auto;
+                    margin-top: 2.22%;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
         }
         .topic-media {
-            margin: 1rem .65rem 1.8rem 0;
+            margin: 4.44%;
             text-align: right;
         }
         .topic-content {
             overflow: hidden;
-            margin: 0 .65rem;
+            width: 95.55%;
+            margin: 0 auto;
             .date {
+                font-size: .8rem;
                 float: left;
                 width: 20%;
-                font-size: .8rem;
                 .day {
                     font-size: 1.5rem;
                     padding: .65rem;
@@ -118,14 +200,17 @@
             }
             .summary {
                 float: left;
-                text-align: justify;
+                -webkit-box-sizing: border-box;
+                   -moz-box-sizing: border-box;
+                    -ms-box-sizing: border-box;
+                     -o-box-sizing: border-box;
+                        box-sizing: border-box;
                 width: 80%;
                 padding: .65rem;
+                text-align: justify;
                 border: 1px solid @yellow;
                 border-radius: .8rem;
-                /*注意补充完全！！*/
-                box-sizing: border-box;
             }
         }
-    }   
+    }
 }

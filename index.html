@@ -11,18 +11,25 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, minimal-ui">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#ffeb3b">
+    <meta name="theme-color" content="#3366CC">
+    <meta ng-if="mode.day" name="theme-color" content="#3366CC">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="醉晚亭">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" href="dist/img/favicon.png">
+    <link rel="apple-touch-icon" href="dist/img/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="dist/img/favicon.png">
     <meta name="robots" content="index,follow" />
-    <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
     <link rel="stylesheet" href="dist/css/main.css">
     <link rel="stylesheet" href="dist/css/fontello.css">
     <link ng-if="mode.day" rel="stylesheet" href="dist/css/day.css">
-
+    <link rel="apple-touch-startup-image" sizes="1536x2008" href="dist/img/icon-1536x2008.png" media="screen and (min-device-width: 1025px) and (max-device-width: 2048px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" sizes="768x1004" href="dist/img/icon-768x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" sizes="640x920" href="dist/img/icon-640x920.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" sizes="320x460" href="dist/img/icon-320x460.png" media="screen and (max-device-width: 320)">
     <script src="dist/lib/angular.min.js"></script>
     <script src="dist/lib/angular-ui-router.min.js"></script>
     <script src="dist/lib/angular-md5.min.js"></script>
@@ -30,14 +37,20 @@
     <script src="dist/lib/jquery.min.js"></script>
     <script src="dist/lib/fastclick.min.js"></script>
     <script src="dist/lib/iscroll.js"></script>
+    <script src="dist/lib/swipe.js"></script>
     <script src="dist/js/build.js"></script>
 </head>
 
 <body>
+    <div style="display: none">
+        <img src="dist/img/favicon.png" alt="logo">
+    </div>
+    <div class="loading" ng-if="loadingPage.showLoading">
+        <img src="dist/img/loading-1.gif" alt="loading">
+    </div>
     <div class="container">
         <div ui-view></div>
     </div>
-
 </body>
 
 </html>

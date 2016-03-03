@@ -1,17 +1,20 @@
 @pink: #ff4081;
 @violet: #3f51b5;
+@border: rgba(154, 154, 154, 0.72);
 
 .container {
     background-color: #fafafa;
 }
-.tab-hold {
-    ul.tab {
-        color: #616161;
-        background-color: rgba(238, 238, 238, .9);
-        li {
-            &.active {
-                color: @violet;
-            }
+#myTab {
+    color: #616161;
+    border-color: @border;
+    background-color: rgba(238, 238, 238, .9);
+    a {
+        &.active {
+            color: @violet;
+        }
+        &:active {
+            background-color: #999;
         }
     }
 }
@@ -22,7 +25,7 @@
         background-color: #fafafa;
     }
     .line {
-        background: linear-gradient(to right, fade(@violet, 10%), fade(@violet, 80%) 3%, fade(@violet, 80%) 97%, fade(@violet, 10%));
+        background: @violet;
     }
 }
 
@@ -31,10 +34,21 @@
 }
 
 .account {
-    .set {
+    .me {
         color: #000;
+        border-color: @border;
+        .exit {
+            color: @violet;
+        }
+        .mode {
+            color: @violet;
+        }
+        .feedback {
+            color: @violet;
+        }
     }
     .attention {
+        border-color: @border;
         & > .title{
             color: @violet;
             i {
@@ -46,6 +60,7 @@
         }
     }
     .collect {
+        border-color: @border;
         & > .title {
             color: @violet;
             i {
@@ -57,6 +72,9 @@
 }
 .article {
     color: #000;
+    .line {
+        border-color: @border;
+    }
     .intro {
         .media-author {
             .article-media {
@@ -79,6 +97,15 @@
             color: @violet;
         }
     }
+    .article-topic {
+        .content {
+            .title {
+                .number {
+                    color: @pink;
+                }
+            }
+        }
+    }
     .article-collect,.article-share {
         color: #f8bbd0;
         border-color: #f8bbd0;
@@ -95,6 +122,19 @@
 .register {
     color: @violet;
     background: #fff !important;
+    input::-webkit-input-placeholder {
+        font-family: 'Microsoft YaHei', sans-serif;
+        color: fade(@pink, 70%);
+    }
+    input:-moz-placeholder {
+        color: fade(@pink, 70%);
+    }
+    input::-moz-placeholder {
+        color: fade(@pink, 70%);
+    }
+    input:-ms-input-placeholder {
+        color: fade(@pink, 70%);
+    }
 }
 .login-content input,
 .register-content input {
@@ -110,16 +150,26 @@
     color: #fff;
     background-color: @pink;
 }
+.login-button:active,
+.register-button:active {
+    background-color: desaturate(@pink, 15%);
+} 
 input::-webkit-input-placeholder {
     color: @pink;
 }
 .media {
     color: #000;
+    li {
+        border-color: rgba(128, 128, 128, 0.29);
+        .media-logo {
+            border: 1px solid #eee;
+        }
+    }
 }
 .media-detail {
-    background-image: url(../img/media-detail-back-1.png);
     .intro{
         color: #000;
+        background-image: url(../img/media-detail-back-1.png);
         .activity .circle {
             color: @pink;
             border: 1px solid @pink;
@@ -130,7 +180,19 @@ input::-webkit-input-placeholder {
     }
 }
 .topic {
-    li {
+    .search {
+        i {
+            color: @pink;
+        }
+        .result {
+            li{
+                em {
+                    color: @pink;
+                }
+            }
+        }
+    }
+    .topicList li {
         .content {
             .title .number {
                 color: @pink;
