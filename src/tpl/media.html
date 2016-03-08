@@ -2,7 +2,7 @@
     <li ng-repeat="item in mediaList" 
         ui-sref="mediaDetail({mediaId: item.id})"
         repeat-finish="setEllipsis()">
-        <img src="{{item.media_avatar}}" alt="" class="media-logo">
+        <img ng-src="{{item.media_avatar}}" alt="" class="media-logo">
         <div class="content">
             <div class="title">{{item.media_name}}</div>
             <div class="intro"><p>{{item.media_intro}}</p></div>

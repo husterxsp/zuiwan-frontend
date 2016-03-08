@@ -12,9 +12,7 @@
                 </li>
             </ul>
             <div class="dot">
-                <span class="active"></span>
-                <span></span>
-                <span></span>
+                <span ng-class="{true: 'active'}[$index==slideIndex]" ng-repeat="item in [1,2,3]"></span>
             </div>
         </div>
     </div>
@@ -23,7 +21,7 @@
     <ul class="acticle">
         <li ng-repeat="item in recommendList" ui-sref="article({articleId: item.id})" 
                 style="background-image:url({{item.article_img}})">
-            <div class="content" style="background-color: {{item.article_color}}">
+            <div class="article-content" style="background-color: {{item.article_color}}">
                 <p class="title">{{item.article_title}}</p>
                 <div class="type">
                     <span><i class="icon-media"></i>{{item.article_media_name}}</span>

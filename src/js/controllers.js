@@ -1,18 +1,13 @@
 angular.module("RecommendModule", [])
-    .controller('RecommendCtrl', ['$scope', '$http', function($scope, $http) {
+    .controller('RecommendCtrl', ['$scope', 'httpService', function($scope, httpService) {
         $scope.loadingPage.showLoading = true;
-        $http({
-            method: 'GET',
-            url: '/zuiwan-backend/index.php/article/get_recommend'
-        }).then(function successCallback(res) {
-            console.log(res);
-            $scope.bannerList = res.data.banner;
-            $scope.recommendList = res.data.recommend;
-            $scope.loadingPage.showLoading = false;
-        }, function errorCallback(res) {
-            console.log(res);
-        });
-
+        httpService.getData('/article/get_recommend')
+            .then(function(data) {
+                $scope.bannerList = data.banner;
+                $scope.recommendList = data.recommend;
+                $scope.loadingPage.showLoading = false;
+            });
+        $scope.slideIndex = 0;
         $scope.renderFinish = function() {
             setTimeout(function() {
                 new Swipe($(".recommend #slide")[0], {
@@ -23,8 +18,8 @@ angular.module("RecommendModule", [])
                     disableScroll: false,
                     stopPropagation: false,
                     callback: function(index, elem) {
-                        var index = index > 2 ? index % 3 : index;
-                        $("#slide .dot > span").eq(index).addClass("active").siblings().removeClass("active");
+                        $scope.slideIndex = index > 2 ? index % 3 : index;
+                        $scope.$digest();
                     },
                     transitionEnd: function(index, elem) {
 
@@ -35,21 +30,14 @@ angular.module("RecommendModule", [])
     }]);
 
 angular.module("TopicModule", ["ngSanitize"])
-    .controller('TopicCtrl', ['$scope', '$http', function($scope, $http) {
+    .controller('TopicCtrl', ['$scope', 'httpService', function($scope, httpService) {
+
         $scope.loadingPage.showLoading = true;
-
-        $http({
-            method: 'GET',
-            url: '/zuiwan-backend/index.php/topic/get_topic',
-        }).then(function successCallback(res) {
-            console.log(res);
-            $scope.topicList = res.data;
-            $scope.loadingPage.showLoading = false;
-
-        }, function errorCallback(res) {
-            console.log(res);
-        });
-
+        httpService.getData('/topic/get_topic')
+            .then(function(data) {
+                $scope.topicList = data;
+                $scope.loadingPage.showLoading = false;
+            });
         $scope.myKeyup = function(e) {
             if (e.keyCode == 13) {
                 $scope.search($scope.searchText);
@@ -66,22 +54,14 @@ angular.module("TopicModule", ["ngSanitize"])
                 }
                 lastClick = +(new Date());
             }
-
-            $http({
-                method: 'GET',
-                url: '/zuiwan-backend/index.php/article/search',
-                params: {
+            httpService.getData('/article/search', {
                     query: searchText
-                }
-            }).then(function successCallback(res) {
-
-                console.log(res.data);
-                $scope.searchResult = res.data;
-                $scope.showResult = true;
-                $(".search > input").blur();
-            }, function errorCallback(res) {
-                console.log(res);
-            });
+                })
+                .then(function(data) {
+                    $scope.searchResult = data;
+                    $scope.showResult = true;
+                    $(".search > input").blur();
+                });
             lastClick = +(new Date());
 
         }
@@ -90,42 +70,37 @@ angular.module("TopicModule", ["ngSanitize"])
             $scope.searchText = "";
         }
     }])
-    .controller('TopicDetailCtrl', ['$scope', '$http', '$state', function($scope, $http, $state) {
+    .controller('TopicDetailCtrl', ['$scope', '$state', 'httpService', function($scope, $state, httpService) {
         $scope.loadingPage.showLoading = true;
-
-        $http({
-            method: 'GET',
-            url: '/zuiwan-backend/index.php/topic/get_one_topic',
-            params: {
+        httpService.getData('/topic/get_one_topic', {
                 id: $state.params.topicId
-            }
-        }).then(function successCallback(res) {
-            console.log(res);
-            $scope.topicInfo = res.data;
-            $scope.date = new Date();
-            $scope.loadingPage.showLoading = false;
-
-        }, function errorCallback(res) {
-            console.log(res);
-        });
+            })
+            .then(function(data) {
+                $scope.topicInfo = data;
+                $scope.loadingPage.showLoading = false;
+            });
+        $scope.setEllipsis = function() {
+            setTimeout(function() {
+                $(".topic-article .summary").each(function(i) {
+                    var divH = $(this).height();
+                    var $p = $("p", $(this)).eq(0);
+                    while ($p.outerHeight() > divH) {
+                        $p.text($p.text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "..."));
+                    };
+                });
+            })
+        };
 
     }]);
 
 angular.module("MediaModule", [])
-    .controller('MediaCtrl', ['$scope', '$http', function($scope, $http) {
+    .controller('MediaCtrl', ['$scope', 'httpService', function($scope, httpService) {
         $scope.loadingPage.showLoading = true;
-
-        $http({
-            method: 'GET',
-            url: '/zuiwan-backend/index.php/media/get_media',
-        }).then(function successCallback(res) {
-            console.log(res.data);
-            $scope.mediaList = res.data;
-            $scope.loadingPage.showLoading = false;
-        }, function errorCallback(res) {
-            console.log(res);
-        });
-
+        httpService.getData('/media/get_media')
+            .then(function(data) {
+                $scope.mediaList = data;
+                $scope.loadingPage.showLoading = false;
+            });
         $scope.setEllipsis = function() {
             setTimeout(function() {
                 $(".media .intro").each(function(i) {
@@ -139,26 +114,17 @@ angular.module("MediaModule", [])
         };
 
     }])
-    .controller('MediaDetailCtrl', ['$scope', '$http', '$state', function($scope, $http, $state) {
+    .controller('MediaDetailCtrl', ['$scope', '$state', 'httpService', function($scope, $state, httpService) {
         $scope.isfocus = false;
         $scope.loadingPage.showLoading = true;
-
-        $http({
-            method: 'GET',
-            url: '/zuiwan-backend/index.php/media/get_one_media',
-            params: {
+        httpService.getData('/media/get_one_media', {
                 id: $state.params.mediaId
-            }
-        }).then(function successCallback(res) {
-            console.log(res);
-            $scope.mediaInfo = res.data;
-            $scope.isfocus = !!$scope.mediaInfo['is_focus'];
-            $scope.loadingPage.showLoading = false;
-
-        }, function errorCallback(res) {
-            console.log(res);
-        });
-
+            })
+            .then(function(data) {
+                $scope.mediaInfo = data;
+                $scope.isfocus = !!$scope.mediaInfo['is_focus'];
+                $scope.loadingPage.showLoading = false;
+            });
         $scope.focus = function() {
             var action;
             if ($scope.isfocus) {
@@ -166,36 +132,30 @@ angular.module("MediaModule", [])
             } else {
                 action = 1;
             }
-            $http({
-                method: 'POST',
-                url: '/zuiwan-backend/index.php/user/focus_media',
-                data: {
+            httpService.postData('/user/focus_media', {
                     media_id: $state.params.mediaId,
                     action: action
-                }
-            }).then(function successCallback(res) {
-                if (!res.data.status) {
-                    alert(res.data.message);
-                } else {
-                    if (action) {
-                        alert("已成功关注！");
-                        $scope.isfocus = true;
+                })
+                .then(function(data) {
+                    if (!data.status) {
+                        alert(data.message);
                     } else {
-                        alert("已取消关注！");
-                        $scope.isfocus = false;
-
+                        if (action) {
+                            alert("已成功关注！");
+                            $scope.isfocus = true;
+                        } else {
+                            alert("已取消关注！");
+                            $scope.isfocus = false;
+                        }
                     }
-                }
-            }, function errorCallback(res) {
-
-            });
+                });
 
         }
     }]);
 
 angular.module("AccountModule", [])
-    .controller('AccountCtrl', ['$scope', '$http', '$state', 'cookieService', function($scope, $http, $state, cookieService) {
-        $scope.loadingPage.showLoading = true;
+    .controller('AccountCtrl', ['$scope', '$state', 'cookieService', 'httpService', function($scope, $state, cookieService, httpService) {
+        console.log(cookieService.get("zw_username"));
         if (!cookieService.get("zw_username")) {
             console.log("go");
             $state.go("tab.me.login");
@@ -203,6 +163,13 @@ angular.module("AccountModule", [])
             return false;
         }
 
+        $scope.loadingPage.showLoading = true;
+        httpService.getData('/user/get_detail')
+            .then(function(data) {
+                $scope.userInfo = data;
+                $(".attention-list").css("width", (9.78 * $scope.userInfo.medias.length) + "rem");
+                $scope.loadingPage.showLoading = false;
+            });
         $scope.switchMode = function() {
             $scope.mode.day = !$scope.mode.day;
             if ($scope.mode.day) {
@@ -210,7 +177,6 @@ angular.module("AccountModule", [])
             } else {
                 $scope.mode.name = "夜间";
             }
-
         }
 
         $scope.exit = function() {
@@ -225,31 +191,21 @@ angular.module("AccountModule", [])
         $scope.sendFeed = function() {
             alert("感谢您的反馈！我们会努力做的更好！")
             $scope.showFeed = false;
-        }
-        $scope.initScroll = function() {
-            setTimeout(function() {
-                var myScroll = new IScroll('.scroll', {
-                    scrollX: true,
-                    scrollY: false,
-                    mouseWheel: true
-                });
-            }, 0);
-        }
+        };
 
-        $http({
-            method: 'GET',
-            url: '/zuiwan-backend/index.php/user/get_detail'
-        }).then(function successCallback(res) {
-            console.log(res);
-            $scope.userInfo = res.data;
-            $(".attention-list").css("width", (9.78 * $scope.userInfo.medias.length) + "rem");
-            $scope.loadingPage.showLoading = false;
-        }, function errorCallback(res) {
-            console.log(res);
-        });
+        // $scope.initScroll = function() {
+        //     console.log(2);
+        //     setTimeout(function() {
+        //         var myScroll = new IScroll('.scroll', {
+        //             scrollX: true,
+        //             scrollY: false,
+        //             mouseWheel: true
+        //         });
+        //     }, 5000);
+        // }
 
     }])
-    .controller('LoginCtrl', ['$scope', '$http', '$state', 'md5', function($scope, $http, $state, md5) {
+    .controller('LoginCtrl', ['$scope', '$state', 'md5', 'httpService', function($scope, $state, md5, httpService) {
         $scope.username = "";
         $scope.password = "";
         $scope.login = function() {
@@ -257,27 +213,20 @@ angular.module("AccountModule", [])
                 alert("请填写用户名或密码！");
                 return false;
             }
-
-            $http({
-                method: 'POST',
-                url: '/zuiwan-backend/index.php/user/login',
-                data: {
+            httpService.postData('/user/login', {
                     username: $scope.username,
                     password: md5.createHash($scope.password)
-                }
-            }).then(function successCallback(res) {
-                console.log(res.data);
-                if (res.data.status) {
-                    $state.go("tab.me.account");
-                } else {
-                    alert(res.data.message);
-                }
-            }, function errorCallback(res) {
-                console.log(res);
-            });
+                })
+                .then(function(data) {
+                    if (data.status) {
+                        $state.go("tab.me.account");
+                    } else {
+                        alert(data.message);
+                    }
+                });
         };
     }])
-    .controller('RegisterCtrl', ['$scope', '$http', '$state', 'md5', function($scope, $http, $state, md5) {
+    .controller('RegisterCtrl', ['$scope', '$state', 'md5', 'httpService', function($scope, $state, md5, httpService) {
         $scope.username = "";
         $scope.password = "";
         $scope.register = function() {
@@ -289,49 +238,34 @@ angular.module("AccountModule", [])
                 alert("请填写正确的邮箱格式！");
                 return false;
             }
-
-            $http({
-                method: 'POST',
-                url: '/zuiwan-backend/index.php/user/register',
-                data: {
+            httpService.postData('/user/register', {
                     username: $scope.username,
                     password: md5.createHash($scope.password)
-                }
-            }).then(function successCallback(res) {
-                console.log(res.data);
-                if (res.data.status) {
-                    alert("注册成功");
-                    $state.go("tab.me.account");
-                } else {
-                    alert(res.data.message);
-                }
-            }, function errorCallback(res) {
-                alert("请求失败");
-            });
+                })
+                .then(function(data) {
+                    if (res.data.status) {
+                        alert("注册成功");
+                        $state.go("tab.me.account");
+                    } else {
+                        alert(data.message);
+                    }
+                });
         };
     }]);
 
 angular.module("ArticleModule", ["ngSanitize"])
-    .controller('ArticleCtrl', ['$scope', '$http', '$state', 'cookieService', function($scope, $http, $state, cookieService) {
+    .controller('ArticleCtrl', ['$scope', '$state', 'cookieService', 'httpService', function($scope, $state, cookieService, httpService) {
 
         $scope.hasCollect = false;
         $scope.loadingPage.showLoading = true;
-
-        $http({
-            method: 'GET',
-            url: '/zuiwan-backend/index.php/article/get_one_article',
-            params: {
+        httpService.getData('/article/get_one_article', {
                 id: $state.params.articleId
-            }
-        }).then(function successCallback(res) {
-            console.log(res);
-            $scope.article = res.data;
-            $scope.hasCollect = !!$scope.article['is_focus'];
-            $scope.loadingPage.showLoading = false;
-
-        }, function errorCallback(res) {
-
-        });
+            })
+            .then(function(data) {
+                $scope.article = data;
+                $scope.hasCollect = !!$scope.article['is_focus'];
+                $scope.loadingPage.showLoading = false;
+            });
 
         $scope.collect = function() {
             if (!cookieService.get('zw_username')) {
@@ -345,17 +279,10 @@ angular.module("ArticleModule", ["ngSanitize"])
             } else {
                 action = 0;
             }
-            $http({
-                method: 'POST',
-                url: '/zuiwan-backend/index.php/user/collect_article',
-                data: {
-                    article_id: $state.params.articleId,
-                    action: action
-                }
-            }).then(function successCallback(res) {
-                console.log(res);
-            }, function errorCallback(res) {
 
+            httpService.postData('/user/collect_article', {
+                article_id: $state.params.articleId,
+                action: action
             });
         };
 

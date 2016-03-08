@@ -6,7 +6,9 @@
             <div class="article-num"><span class="number">{{topicInfo.article_count}}</span>篇</div>
         </div>
     </div>
-    <div class="topic-article" ng-repeat="item in topicInfo.articles">
+    <div class="topic-article" 
+        ng-repeat="item in topicInfo.articles"
+        repeat-finish="setEllipsis()">
         <div class="title-image" style="background-image: url({{item.article_img}})" ui-sref="article({articleId: item.id})">
             <div class="title-content">
                 <div class="article-title">{{item.article_title}}</div>
@@ -20,7 +22,7 @@
                 <div class="month">{{item.create_time | dateObj | month}}</div>
             </div>
             <div class="summary">
-                {{item.article_intro}}
+                <p>{{item.article_intro}}</p>
             </div>
         </div>
     </div>
