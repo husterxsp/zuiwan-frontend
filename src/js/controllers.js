@@ -1,12 +1,46 @@
 angular.module("RecommendModule", [])
     .controller('RecommendCtrl', ['$scope', 'httpService', function($scope, httpService) {
         $scope.loadingPage.showLoading = true;
-        httpService.getData('/article/get_recommend')
-            .then(function(data) {
-                $scope.bannerList = data.banner;
-                $scope.recommendList = data.recommend;
-                $scope.loadingPage.showLoading = false;
-            });
+
+        $scope.hasGetData = false;
+        var page = 1;
+        $scope.getList = function() {
+            if (page == 0) {
+                return false;
+            }
+            httpService.getData('/article/get_recommend', {
+                    page: page
+                })
+                .then(function(data) {
+                    $scope.hasGetData = true;
+                    if (page == 1) {
+                        $scope.bannerList = data.banner;
+                        $scope.recommendList = data.recommend;
+                        $scope.loadingPage.showLoading = false;
+                        page++;
+                    } else {
+                        for (var i = 0; i < data.recommend.length; i++) {
+                            console.log(data.recommend);
+                            $scope.recommendList.push(data.recommend[i]);
+                        }
+                        // $scope.recommendList = $scope.recommendList.concat(data.recommend);
+                        if ($scope.recommendList.length >= data.recommendCount) {
+                            page = 0;
+                            console.log(page);
+                        }
+                    }
+                });
+        };
+        $scope.getList();
+        // var page = 1;
+        // httpService.getData('/article/get_recommend', {
+        //         page: page
+        //     })
+        //     .then(function(data) {
+        //         $scope.bannerList = data.banner;
+        //         $scope.recommendList = data.recommend;
+        //         $scope.loadingPage.showLoading = false;
+        //     });
         $scope.slideIndex = 0;
         $scope.renderFinish = function() {
             setTimeout(function() {
@@ -243,7 +277,7 @@ angular.module("AccountModule", [])
                     password: md5.createHash($scope.password)
                 })
                 .then(function(data) {
-                    if (res.data.status) {
+                    if (data.status) {
                         alert("注册成功");
                         $state.go("tab.me.account");
                     } else {
@@ -254,7 +288,7 @@ angular.module("AccountModule", [])
     }]);
 
 angular.module("ArticleModule", ["ngSanitize"])
-    .controller('ArticleCtrl', ['$scope', '$state', 'cookieService', 'httpService', function($scope, $state, cookieService, httpService) {
+    .controller('ArticleCtrl', ['$scope', '$state', '$sce', 'cookieService', 'httpService', function($scope, $state, $sce, cookieService, httpService) {
 
         $scope.hasCollect = false;
         $scope.loadingPage.showLoading = true;
@@ -262,6 +296,7 @@ angular.module("ArticleModule", ["ngSanitize"])
                 id: $state.params.articleId
             })
             .then(function(data) {
+                data.article_content = $sce.trustAsHtml(data.article_content);
                 $scope.article = data;
                 $scope.hasCollect = !!$scope.article['is_focus'];
                 $scope.loadingPage.showLoading = false;

@@ -2,6 +2,15 @@ angular.module('myApp', ['ui.router', 'angular-md5', 'directives', 'services', '
     .run(['$rootScope', '$state', '$stateParams', function($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+
+        $rootScope.$on('$stateChangeSuccess', function(event, to, toParams, from, fromParams) {
+            $rootScope.$previousState = {
+                from: from,
+                fromParams: fromParams,
+                to: to,
+                toParams: toParams
+            };
+        });
     }])
     .config(['$httpProvider', function($httpProvider) {
         //request payload, 转换成form data
