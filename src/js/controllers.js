@@ -9,38 +9,27 @@ angular.module("RecommendModule", [])
                 return false;
             }
             httpService.getData('/article/get_recommend', {
-                    page: page
-                })
-                .then(function(data) {
-                    $scope.hasGetData = true;
-                    if (page == 1) {
-                        $scope.bannerList = data.banner;
-                        $scope.recommendList = data.recommend;
-                        $scope.loadingPage.showLoading = false;
-                        page++;
-                    } else {
-                        for (var i = 0; i < data.recommend.length; i++) {
-                            console.log(data.recommend);
-                            $scope.recommendList.push(data.recommend[i]);
-                        }
-                        // $scope.recommendList = $scope.recommendList.concat(data.recommend);
-                        if ($scope.recommendList.length >= data.recommendCount) {
-                            page = 0;
-                            console.log(page);
-                        }
+                page: page
+            }).then(function(data) {
+                $scope.hasGetData = true;
+                if (page == 1) {
+                    $scope.bannerList = data.banner;
+                    $scope.recommendList = data.recommend;
+                    $scope.loadingPage.showLoading = false;
+                    page++;
+                } else {
+                    for (var i = 0; i < data.recommend.length; i++) {
+                        $scope.recommendList.push(data.recommend[i]);
                     }
-                });
+                    page++;
+                    // $scope.recommendList = $scope.recommendList.concat(data.recommend);
+                    if ($scope.recommendList.length >= data.recommendCount) {
+                        page = 0;
+                    }
+                }
+            });
         };
         $scope.getList();
-        // var page = 1;
-        // httpService.getData('/article/get_recommend', {
-        //         page: page
-        //     })
-        //     .then(function(data) {
-        //         $scope.bannerList = data.banner;
-        //         $scope.recommendList = data.recommend;
-        //         $scope.loadingPage.showLoading = false;
-        //     });
         $scope.slideIndex = 0;
         $scope.renderFinish = function() {
             setTimeout(function() {
@@ -80,9 +69,7 @@ angular.module("TopicModule", ["ngSanitize"])
         var lastClick = 0;
         $scope.search = function(searchText) {
             if (lastClick) {
-                console.log(lastClick);
                 var gap = +(new Date()) - lastClick;
-                console.log(gap);
                 if (gap < 1000) {
                     return false;
                 }
@@ -189,9 +176,7 @@ angular.module("MediaModule", [])
 
 angular.module("AccountModule", [])
     .controller('AccountCtrl', ['$scope', '$state', 'cookieService', 'httpService', function($scope, $state, cookieService, httpService) {
-        console.log(cookieService.get("zw_username"));
         if (!cookieService.get("zw_username")) {
-            console.log("go");
             $state.go("tab.me.login");
             $scope.loadingPage.showLoading = false;
             return false;
@@ -228,14 +213,13 @@ angular.module("AccountModule", [])
         };
 
         // $scope.initScroll = function() {
-        //     console.log(2);
         //     setTimeout(function() {
-        //         var myScroll = new IScroll('.scroll', {
+        //         var myScroll = new IScroll('.scroll-list', {
         //             scrollX: true,
         //             scrollY: false,
         //             mouseWheel: true
         //         });
-        //     }, 5000);
+        //     }, 1000);
         // }
 
     }])

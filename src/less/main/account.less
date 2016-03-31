@@ -1,52 +1,53 @@
 @import 'var.less';
-
 .feed {
     position: fixed;
-    width: 100%;
-    height: 100%;
+    z-index: 999;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     background-color: #fff;
-    z-index: 999;
     textarea {
         font-size: 1.2rem;
-        height: 4.8rem;
+        overflow-y: scroll;
         width: 100%;
+        height: 4.8rem;
         padding: 1rem;
         border: 1px solid #ccc;
-        overflow-y: scroll;
     }
     .send {
-        width: 60%;
-        color: #000;
-        margin: 0 auto;
-        background-color: #ccc;
-        line-height: 40px;
-        text-align: center;
-        border-radius: 5px;
         font-size: 16px;
+        line-height: 40px;
+        width: 60%;
+        margin: 0 auto;
+        text-align: center;
+        color: #000;
+        border-radius: 5px;
+        background-color: #ccc;
     }
 }
 .account {
-    width: 95.56%;
-    margin: 0 auto;
     .me {
         position: relative;
         overflow: hidden;
-        height: 5.2rem;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+                box-sizing: border-box;
+        width: 95.56%;
+        left: 2.22%;
         padding: 1.95rem 0 1.3rem 7.15rem;
-        border-bottom: 1px solid rgba(80,80,80,.7);
         white-space: nowrap;
-        overflow: hidden;
         text-overflow: ellipsis;
+        border-bottom: 1px solid rgba(80,80,80,.7);
         .avatar {
             position: absolute;
             top: 1.95rem;
-            left: 0.65rem;
+            left: .65rem;
             width: 5.2rem;
             height: 5.2rem;
+            border: 1px solid #f1f1f1;
             border-radius: 5.2rem;
-            border: 1px solid #F1F1F1;
         }
         .name {
             font-size: 1.4rem;
@@ -62,14 +63,17 @@
             display: inline-block;
             margin-right: 1.5rem;
         }
-        .feedback{
-            color: #fff;
+        .feedback {
             display: inline-block;
-        }   
+            color: #fff;
+        }
     }
     .attention {
         position: relative;
+        overflow-x: hidden;
         padding-top: 1rem;
+        width: 95.56%;
+        left: 2.22%;
         border-bottom: 1px solid rgba(80,80,80,.7);
         .title {
             margin-bottom: .8rem;
@@ -80,11 +84,12 @@
                 color: @yellow;
             }
         }
-        .scroll {
+        .scroll-list {
             overflow-x: scroll;
             .attention-list {
                 position: relative;
                 z-index: 1;
+                float: left;
                 -webkit-user-select: none;
                    -moz-user-select: none;
                     -ms-user-select: none;
@@ -115,7 +120,7 @@
     }
     .collect {
         padding-top: 1rem;
-        border-bottom: 1px solid rgba(80,80,80,.7);
+        // border-bottom: 1px solid rgba(80,80,80,.7);
         .title {
             margin-bottom: .8rem;
             margin-left: .8rem;
@@ -152,8 +157,8 @@
                     }
                     span {
                         float: left;
-                        width: 50%;
                         overflow: hidden;
+                        width: 50%;
                         white-space: nowrap;
                         text-overflow: ellipsis;
                     }
@@ -199,6 +204,9 @@
 .register-content input {
     font-size: 1.2rem;
     line-height: 3.2rem;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
     width: 100%;
     height: 3.2rem;
     margin-top: 13%;
@@ -207,11 +215,8 @@
     border: 1px solid @yellow;
     border-radius: .5rem;
     background-color: rgba(17, 17, 17, .6);
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
         -ms-box-sizing: border-box;
          -o-box-sizing: border-box;
-            box-sizing: border-box;
 }
 .login-button,
 .register-button {
@@ -228,7 +233,7 @@
 .login-button:active,
 .register-button:active {
     background-color: desaturate(@yellow, 15%);
-} 
+}
 .login-content {
     .title {
         font-family: 'ErasLightITC';

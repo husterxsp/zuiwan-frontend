@@ -26,11 +26,9 @@ gulp.task('css', function() {
 
 gulp.task('js', function() {
     gulp.src('src/js/*.js')
-        .pipe(load.sourcemaps.init())
         .pipe(load.jshint())
         .pipe(load.uglify())
         .pipe(load.concat('build.js'))
-        .pipe(load.sourcemaps.write('.'))
         .pipe(gulp.dest('dist/js'))
     gulp.src('src/lib/*.js')
         .pipe(load.jshint())

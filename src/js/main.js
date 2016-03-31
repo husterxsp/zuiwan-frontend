@@ -29,24 +29,13 @@
 $(function() {
     FastClick.attach(document.body);
 
-    var animate = false;
     var position = $(window).scrollTop();
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
-        if (scroll > position && !animate && $("#myTab").length) {
-            animate = true;
-            $("#myTab").animate({
-                "bottom": "-4.4rem",
-            }, 300, function() {
-                animate = false;
-            });
-        } else if (scroll < position && !animate && $("#myTab").length) {
-            animate = true;
-            $("#myTab").animate({
-                "bottom": "0",
-            }, 300, function() {
-                animate = false;
-            });
+        if (scroll > position && $("#myTab").length) {
+            $("#myTab").addClass("hidden");
+        } else if (scroll < position && $("#myTab").length) {
+            $("#myTab").removeClass("hidden");
         }
         position = scroll;
     });

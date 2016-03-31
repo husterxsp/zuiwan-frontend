@@ -39,6 +39,7 @@ body {
     // -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 h3 {
     font-size: 1.7em;
@@ -56,6 +57,9 @@ ul {
 input {
     outline: none;
 }
+::-webkit-scrollbar { 
+    display: none !important; 
+} 
 .container {
     position: relative;
     overflow: hidden;
@@ -75,6 +79,14 @@ input {
     text-align: center;
     border-top: 1px solid #4a4a4a;
     background-color: #161616;
+    -webkit-transition: bottom 0.3s;
+    -moz-transition: bottom 0.3s;
+    -ms-transition: bottom 0.3s;
+    -o-transition: bottom 0.3s;
+    transition: bottom 0.3s;
+    &.hidden {
+        bottom: -4.4rem;
+    }
     a {
         float: left;
         width: 25%;
@@ -99,6 +111,7 @@ input {
     }
 }
 .history-back {
+    display: block;
     font-size: 1.5rem;
     line-height: 3rem;
     position: fixed;
@@ -112,6 +125,9 @@ input {
     border: 1px solid @yellow;
     border-radius: 2.6rem;
     background-color: rgba(33, 33, 33, .54);
+    &:active {
+        background-color: rgba(33, 33, 33, .35);
+    }
 }
 .loading {
     position: fixed;

@@ -32,7 +32,6 @@ angular.module('services', [])
                 url: '/zuiwan-backend/index.php' + url,
                 params: params
             }).then(function successCallback(res) {
-                // console.log(res.data);
                 deferred.resolve(res.data);
             }, function errorCallback(res) {
                 console.log(res.data);
@@ -49,7 +48,6 @@ angular.module('services', [])
                 url: '/zuiwan-backend/index.php' + url,
                 data: data
             }).then(function successCallback(res) {
-                // console.log(res.data);
                 deferred.resolve(res.data);
             }, function errorCallback(res) {
                 console.log(res.data);

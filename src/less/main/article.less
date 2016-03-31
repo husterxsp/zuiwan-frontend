@@ -101,6 +101,7 @@
         }
     }
     .article-collect, .article-share {
+        display: block;
         line-height: 3rem;
         font-size: 1.5rem;
         position: fixed;
@@ -113,6 +114,9 @@
         border: 1px solid @yellow;
         border-radius: 2.6rem;
         background-color: rgba(33, 33, 33, .54);
+        &:active {
+            background-color: rgba(33, 33, 33, .35);
+        }
     }
     .article-collect {
         // right: 6rem;

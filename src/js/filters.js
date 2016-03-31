@@ -5,13 +5,8 @@ angular.module('filters', [])
         if (!date) {
             return;
         }
-        // console.log(date);
-        // var date = new Date(date);
         var t = date.split(/[- :]/);
-        // console.log(t);
-        // Apply each element to the Date function
         var d = new Date(t[0], t[1] - 1, t[2], t[3], t[4], t[5]);
-        // console.log(d);
         var actiondate = new Date(d);
         return actiondate;
     }
@@ -42,3 +37,5 @@ angular.module('filters', [])
         return month[date.getMonth()] + ', ' + day + ', ' + date.getFullYear();;
     }
 })
+
+;

@@ -95,4 +95,4 @@ angular.module('myApp', ['ui.router', 'angular-md5', 'directives', 'services', '
         $scope.loadingPage = {
             'showLoading': false
         };
-    }])
+    }]);
