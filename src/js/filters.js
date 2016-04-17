@@ -34,7 +34,7 @@ angular.module('filters', [])
         if (day < 10) {
             day = '0' + day;
         }
-        return month[date.getMonth()] + ', ' + day + ', ' + date.getFullYear();;
+        return month[date.getMonth()] + ' ' + day + ' , ' + date.getFullYear();;
     }
 })
 
