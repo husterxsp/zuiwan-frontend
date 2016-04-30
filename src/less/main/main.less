@@ -34,12 +34,12 @@ body {
     font-weight: lighter;
     line-height: 1.5;
     position: relative;
+    overflow-x: hidden;
     height: 100%;
     color: #fff;
     // -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
 }
 h3 {
     font-size: 1.7em;
@@ -57,13 +57,13 @@ ul {
 input {
     outline: none;
 }
-::-webkit-scrollbar { 
-    display: none !important; 
-} 
+::-webkit-scrollbar {
+    display: none !important;
+}
 .container {
     position: relative;
-    overflow: hidden;
     z-index: 0;
+    overflow: hidden;
     width: 100%;
     max-width: 768px;
     min-height: 100%;
@@ -76,16 +76,22 @@ input {
     width: 100%;
     max-width: 768px;
     margin: 0 auto;
+    -webkit-transition: transform .3s;
+       -moz-transition: transform .3s;
+        -ms-transition: transform .3s;
+         -o-transition: transform .3s;
+            transition: transform .3s;
+    // transform: translateY(0);
     text-align: center;
     border-top: 1px solid #4a4a4a;
     background-color: #161616;
-    -webkit-transition: bottom 0.3s;
-    -moz-transition: bottom 0.3s;
-    -ms-transition: bottom 0.3s;
-    -o-transition: bottom 0.3s;
-    transition: bottom 0.3s;
     &.hidden {
-        bottom: -4.4rem;
+        -webkit-transform: translateY(4.4rem);
+           -moz-transform: translateY(4.4rem);
+            -ms-transform: translateY(4.4rem);
+             -o-transform: translateY(4.4rem);
+                transform: translateY(4.4rem);
+        // bottom: -4.4rem;
     }
     a {
         float: left;
@@ -103,7 +109,7 @@ input {
             color: @yellow;
         }
         &:active {
-            background-color: #0E0E0E;
+            background-color: #0e0e0e;
         }
         span {
             display: block;
@@ -111,13 +117,13 @@ input {
     }
 }
 .history-back {
-    display: block;
     font-size: 1.5rem;
     line-height: 3rem;
     position: fixed;
     z-index: 1;
     bottom: 1.4rem;
     left: 1.8rem;
+    display: block;
     width: 3rem;
     height: 3rem;
     text-align: center;

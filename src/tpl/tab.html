@@ -1,5 +1,5 @@
 <div ui-view></div>
-<div id="myTab">
+<div id="myTab" ng-class="{ hidden: tab.hide }">
     <a ui-sref="tab.recommend" ng-class="{ active: $state.includes('tab.recommend') }">
         <i class="icon-recommend"></i>
         <span>推荐</span>

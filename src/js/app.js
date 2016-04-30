@@ -91,7 +91,9 @@ angular.module('myApp', ['ui.router', 'angular-md5', 'directives', 'services', '
             $scope.mode.day = false;
             $scope.mode.name = "夜间";
         }
-
+        $scope.tab = {
+            hide: false
+        };
         $scope.loadingPage = {
             'showLoading': false
         };

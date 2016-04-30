@@ -30,7 +30,7 @@ $(function() {
     FastClick.attach(document.body);
 
     var position = $(window).scrollTop();
-    $(window).scroll(function() {
+    $(document).scroll(function() {
         var scroll = $(window).scrollTop();
         if (scroll > position && $("#myTab").length) {
             $("#myTab").addClass("hidden");
