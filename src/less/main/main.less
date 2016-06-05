@@ -153,3 +153,18 @@ input {
     left: 0;
     margin: auto;
 }
+.border-bottom-1px {
+    position: relative;
+}
+.border-bottom-1px::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    -webkit-transform: scaleY(.5);
+            transform: scaleY(.5);
+    -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+    border-bottom: 1px solid #424242;
+}

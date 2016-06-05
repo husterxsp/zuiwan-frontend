@@ -1,18 +1,14 @@
-@import "var.less";
-
+@import 'var.less';
 .media {
     width: 95.56%;
     margin: 0 auto;
     li {
         position: relative;
         padding: 1.3rem 1.95rem 1.95rem 5.6rem;
-        border-bottom: 1px solid rgba(80, 80, 80, 0.7);
-        // border-width: 0 0 1px 0;
-        // border-image: url(../img/line.png) 2 0 round;
         .media-logo {
             position: absolute;
-            left: 0.6rem;
             top: 2.6rem;
+            left: .6rem;
             width: 3.7rem;
             height: 3.7rem;
             border-radius: 50%;
@@ -23,8 +19,8 @@
                 margin-bottom: 1rem;
             }
             .intro {
-                height: 3rem;
                 overflow: hidden;
+                height: 3rem;
             }
         }
     }
@@ -33,21 +29,21 @@
     padding-bottom: 5rem;
     .intro {
         position: relative;
+        top: 0;
+        left: 0;
         overflow: hidden;
         width: 100%;
         height: 100%;
         margin-bottom: 2rem;
-        top: 0;
-        left: 0;
         text-align: center;
         background: no-repeat center/86.6% auto;
         background-image: url(../img/media-detail-back.png);
         .img {
             width: 24.4%;
-            padding-top: 24.4%;
             margin: 4% auto 0;
+            padding-top: 24.4%;
+            border: 1px solid #f1f1f1;
             border-radius: 50%;
-            border: 1px solid #F1F1F1;
             background: no-repeat center/cover;
         }
         .name {
@@ -64,25 +60,26 @@
             width: 66.7%;
             margin: 0 auto;
             .circle {
-                position: relative;
                 font-size: 1.4rem;
+                position: relative;
                 width: 100%;
-                padding-top: 100%;
                 margin-bottom: .5rem;
+                padding-top: 100%;
                 color: @yellow;
                 border: 1px solid @yellow;
                 border-radius: 50%;
-                & > span, i {
-                    text-align: center;
+                & > span,
+                i {
+                    line-height: 2.1rem;
                     position: absolute;
                     top: 0;
                     right: 0;
-                    left: 0;
                     bottom: 0;
-                    margin: auto;
+                    left: 0;
                     width: 2.1rem;
                     height: 2.1rem;
-                    line-height: 2.1rem;
+                    margin: auto;
+                    text-align: center;
                 }
             }
             & > div {
@@ -98,9 +95,9 @@
             position: relative;
             float: left;
             width: 46.67%;
-            padding-top: 46.67%;
-            margin-left: 2.22%;
             margin-bottom: 2.22%;
+            margin-left: 2.22%;
+            padding-top: 46.67%;
             background: no-repeat center/cover;
             background-image: url(../img/recommend-back.png);
         }

@@ -1,7 +1,6 @@
 @pink: #ff4081;
 @violet: #3f51b5;
-@border: rgba(128, 128, 128, 0.29);
-
+@border: #bdbdbd;
 .container {
     background-color: #fafafa;
 }
@@ -18,7 +17,6 @@
         }
     }
 }
-
 .recommend {
     .other {
         color: @pink;
@@ -28,15 +26,12 @@
         background: @violet;
     }
 }
-
 .recommend #slide .dot span.active {
     background-color: fade(@pink, 10%);
 }
-
 .account {
     .me {
         color: #000;
-        border-color: @border;
         .exit {
             color: @violet;
         }
@@ -48,12 +43,11 @@
         }
     }
     .attention {
-        border-color: @border;
-        & > .title{
+        & > .title {
             color: @violet;
             i {
                 color: @pink;
-            } 
+            }
         }
         .attention-list {
             color: #000;
@@ -68,7 +62,6 @@
             }
         }
     }
-    
 }
 .article-block {
     color: #333;
@@ -91,7 +84,6 @@
                 }
             }
         }
-        
     }
     .article-content {
         .date {
@@ -110,17 +102,16 @@
             }
         }
     }
-    .article-collect,.article-share {
+    .article-collect,
+    .article-share {
         color: #f8bbd0;
         border-color: #f8bbd0;
     }
 }
-
 .history-back {
     color: #f8bbd0;
-    border-color: #f8bbd0; 
+    border-color: #f8bbd0;
 }
-
 /*登录，注册------------------*/
 .login,
 .register {
@@ -157,21 +148,20 @@
 .login-button:active,
 .register-button:active {
     background-color: desaturate(@pink, 15%);
-} 
+}
 input::-webkit-input-placeholder {
     color: @pink;
 }
 .media {
     color: #000;
     li {
-        border-color: @border;
         .media-logo {
             border: 1px solid #eee;
         }
     }
 }
 .media-detail {
-    .intro{
+    .intro {
         color: #000;
         background-image: url(../img/media-detail-back-1.png);
         .activity .circle {
@@ -189,7 +179,7 @@ input::-webkit-input-placeholder {
             color: @pink;
         }
         .result {
-            li{
+            li {
                 em {
                     color: @pink;
                 }
@@ -234,4 +224,7 @@ input::-webkit-input-placeholder {
             }
         }
     }
+}
+.border-bottom-1px::after {
+    border-color: @border;
 }
